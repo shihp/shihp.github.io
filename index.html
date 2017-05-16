@@ -127,7 +127,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Mist',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -857,6 +857,130 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://shihp.github.io/2017/03/21/liunx/vim/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="walter">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/12179178?v=3&u=0c0d21c59b924f1bd9063d456652768791dacde3&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="五年">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/21/liunx/vim/" itemprop="url">mac vim 设置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-21T18:20:44+08:00">
+                2017-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/21/liunx/vim/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/03/21/liunx/vim/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#mac vim 设置</p>
+<p><code>vi ~/.vimrc</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">set ai                  &quot; auto indenting</div><div class="line">set history=100         &quot; keep 100 lines of history</div><div class="line">set ruler               &quot; show the cursor position</div><div class="line">syntax on               &quot; syntax highlighting</div><div class="line">set hlsearch            &quot; highlight the last searched term</div><div class="line">filetype plugin on      &quot; use the file type plugins</div><div class="line"></div><div class="line">&quot; When editing a file, always jump to the last cursor position</div><div class="line">autocmd BufReadPost *</div><div class="line">\ if ! exists(&quot;g:leave_my_cursor_position_alone&quot;) |</div><div class="line">\ if line(&quot;&apos;\&quot;&quot;) &gt; 0 &amp;&amp; line (&quot;&apos;\&quot;&quot;) &lt;= line(&quot;$&quot;) |</div><div class="line">\ exe &quot;normal g&apos;\&quot;&quot; |</div><div class="line">\ endif |</div><div class="line">\ endif</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://shihp.github.io/2017/03/21/liunx/vagrant/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -946,130 +1070,6 @@
 <p> ##smoe lesson<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">Vagrant Commands</div><div class="line">We’re now ready to get started working within our Linux virtual machine. If your download hasn’t completed from the initial setup, go ahead and take a break and come back when that has completed. You won’t be able to make further progress until the virtual machine is up and running as much of the course will take place within this environment.</div><div class="line"></div><div class="line">Before we access our machine, let’s quickly review a few commands that vagrant provides to make managing your virtual machines much simpler. Remember, your vagrant machine lives within this specific folder on your computer so make sure you’re within that same folder your created earlier; otherwise these commands won’t work as expected.</div><div class="line"></div><div class="line">Type vagrant status</div><div class="line">This command will show you the current status of the virtual machine. It should currently read “default running (virtualbox)” along with some other information.</div><div class="line">Type vagrant suspend</div><div class="line">This command suspends your virtual machine. All of your work is saved and the machine is put into a “sleep mode” of sorts. The machines state is saved and it’s very quick to stop and start your work. You should use this command if you plan to just take a short break from your work but don’t want to leave the virtual machine running.</div><div class="line">Type vagrant up</div><div class="line">This gets your virtual machine up and running again. Notice we didn’t have to redownload the virtual machine image, since it’s already been downloaded.</div><div class="line">Type vagrant ssh</div><div class="line">This command will actually connect to and log you into your virtual machine. Once done you will see a few lines of text showing various performance statistics of the virtual machine along with a new command line prompt that reads vagrant@vagrant-ubuntu-trusty-64:~$</div><div class="line">Here are a few other important commands that we’ll discuss but you do not need to practice at this time:</div><div class="line"></div><div class="line">vagrant halt</div><div class="line">This command halts your virtual machine. All of your work is saved and the machine is turned off - think of this as “turning the power off”. It’s much slower to stop and start your virtual machine using this command, but it does free up all of your RAM once the machine has been stopped. You should use this command if you plan to take an extended break from your work, like when you are done for the day. The command vagrant up will turn your machine back on and you can continue your work.</div><div class="line">vagrant destroy</div><div class="line">This command destroys your virtual machine. Your work is not saved, the machine is turned off and forgotten about for the most part. Think of this as formatting the hard drive of a computer. You can always use vagrant up to relaunch the machine but you’ll be left with the baseline Linux installation from the beginning of this course. You should not have to use this command at any time during this course unless, at some point in time, you perform a task on the virtual machine that makes it completely inoperable.</div></pre></td></tr></table></figure></p>
 <p> <strong>参考链接：</strong><br> <a href="https://atlas.hashicorp.com/ubuntu/boxes/trusty64" target="_blank" rel="external">first up帮助文档</a></p>
 
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://shihp.github.io/2017/03/21/liunx/vim/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="walter">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/12179178?v=3&u=0c0d21c59b924f1bd9063d456652768791dacde3&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="五年">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/03/21/liunx/vim/" itemprop="url">mac vim 设置</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-21T18:20:44+08:00">
-                2017-03-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/21/liunx/vim/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/03/21/liunx/vim/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#mac vim 设置</p>
-<p><code>vi ~/.vimrc</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">set ai                  &quot; auto indenting</div><div class="line">set history=100         &quot; keep 100 lines of history</div><div class="line">set ruler               &quot; show the cursor position</div><div class="line">syntax on               &quot; syntax highlighting</div><div class="line">set hlsearch            &quot; highlight the last searched term</div><div class="line">filetype plugin on      &quot; use the file type plugins</div><div class="line"></div><div class="line">&quot; When editing a file, always jump to the last cursor position</div><div class="line">autocmd BufReadPost *</div><div class="line">\ if ! exists(&quot;g:leave_my_cursor_position_alone&quot;) |</div><div class="line">\ if line(&quot;&apos;\&quot;&quot;) &gt; 0 &amp;&amp; line (&quot;&apos;\&quot;&quot;) &lt;= line(&quot;$&quot;) |</div><div class="line">\ exe &quot;normal g&apos;\&quot;&quot; |</div><div class="line">\ endif |</div><div class="line">\ endif</div></pre></td></tr></table></figure>
           
         
       
@@ -1289,6 +1289,245 @@ system call filters failed to install; check the logs and fix your configuration
 <p>######创建管理员<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">curl -XPOST -u elastic &apos;127.0.0.1:9200/_xpack/security/user/walter&apos; -d &apos;&#123;</div><div class="line">  &quot;password&quot; : &quot;enjoyprocess&quot;,</div><div class="line">  &quot;full_name&quot; : &quot;walter.shi&quot;,</div><div class="line">  &quot;email&quot; : &quot;walter.shi@langlive.com&quot;,</div><div class="line">  &quot;roles&quot; : [ &quot;events_admin&quot; ]</div><div class="line">&#125;&apos;</div><div class="line"></div><div class="line">curl -XPOST -u elastic &apos;127.0.0.1:9200/_xpack/security/user/dev&apos; -d &apos;&#123;</div><div class="line">  &quot;password&quot; : &quot;kibana-search&quot;,</div><div class="line">  &quot;full_name&quot; : &quot;langlive.dev&quot;,</div><div class="line">  &quot;email&quot; : &quot;dev@langlive.com&quot;,</div><div class="line">  &quot;roles&quot; : [ &quot;events_admin&quot; ]</div><div class="line">&#125;&apos;</div></pre></td></tr></table></figure></p>
 <p>#####修改密码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">curl -XPUT &apos;localhost:9200/_xpack/security/user/elastic/_password?pretty&apos; -H &apos;Content-Type: application/json&apos; -d&apos;</div><div class="line">&#123;</div><div class="line">  &quot;password&quot;: &quot;elasticpassword&quot;</div><div class="line">&#125;</div><div class="line">&apos;</div></pre></td></tr></table></figure></p>
 <p><strong>参考链接：</strong><br><a href="https://www.elastic.co/guide/en/beats/filebeat/5.1/filebeat-installation.html" target="_blank" rel="external">filebeat安装文档教程</a><br><a href="https://www.elastic.co/guide/en/beats/filebeat/current/configuration-general.html" target="_blank" rel="external">filebeat配置文档教程</a><br><a href="https://www.elastic.co/guide/en/beats/libbeat/5.1/logstash-installation.html#logstash-setup" target="_blank" rel="external">logstash安装文档教程</a><br><a href="http://www.jianshu.com/p/4fe495639a9a" target="_blank" rel="external">logstash安装插件教程</a><br><a href="https://www.elastic.co/guide/en/logstash/current/config-examples.html" target="_blank" rel="external">logstash配置文档教程</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://shihp.github.io/2017/02/04/liunx/linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="walter">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/12179178?v=3&u=0c0d21c59b924f1bd9063d456652768791dacde3&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="五年">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/02/04/liunx/linux/" itemprop="url">linux</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-04T18:20:44+08:00">
+                2017-02-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/02/04/liunx/linux/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/02/04/liunx/linux/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="linux"><a href="#linux" class="headerlink" title="#linux"></a>#linux</h2><p>[TOC]</p>
+<p>##系统</p>
+<table>
+<thead>
+<tr>
+<th>信息</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>内核/操作系统/CPU信息</td>
+<td><code>uname</code></td>
+</tr>
+<tr>
+<td>操作系统版本</td>
+<td>head -n 1 /etc/issue</td>
+</tr>
+<tr>
+<td>计算机名</td>
+<td>hostname</td>
+</tr>
+<tr>
+<td>列出加载的内核模块</td>
+<td>lsmod</td>
+</tr>
+<tr>
+<td>查看环境变量</td>
+<td>env</td>
+</tr>
+<tr>
+<td>查看系统</td>
+<td>ps -p 1</td>
+</tr>
+</tbody>
+</table>
+<p>##资源</p>
+<table>
+<thead>
+<tr>
+<th>信息</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>查看内存使用量和交换区使用量</td>
+<td><code>free -g</code></td>
+</tr>
+<tr>
+<td>查看系统运行时间、用户数、负载</td>
+<td>uptime</td>
+</tr>
+<tr>
+<td>端口zan yong</td>
+<td>lsof -i</td>
+<td>grep 5601</td>
+</tr>
+<tr>
+<td>查看硬盘</td>
+<td><code>du -sh *</code> ``</td>
+</tr>
+</tbody>
+</table>
+<p>##用户</p>
+<table>
+<thead>
+<tr>
+<th>信息</th>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>新增</td>
+<td><code>adduser</code></td>
+<td>会自动为创建的用户指定主目录、系统shell版本，会在创建时输入用户密码。</td>
+</tr>
+<tr>
+<td>新增</td>
+<td><code>useradd</code></td>
+<td>需要使用参数选项指定上述基本设置，如果不使用任何参数，则创建的用户无密码、无主目录、没有指定shell版本</td>
+</tr>
+<tr>
+<td>添加root</td>
+<td></td>
+<td><code>vi /etc/sudoers.d/$user &amp;&amp; $user ALL=(ALL) ALL``chmod $user_file 400</code></td>
+</tr>
+<tr>
+<td>修改密码</td>
+<td><code>sudo passwd $suser</code></td>
+</tr>
+<tr>
+<td>修改用户权限</td>
+<td><code>sudo chown -R elasticsearch:elasticsearch /data/local/elasticsearch</code></td>
+</tr>
+</tbody>
+</table>
+<p>##进程<br>|信息|命令|描述<br>|:|<br>|kill|<code>ps -ef | grep xmpp.php | grep -v grep | awk &#39;{print $2}&#39; | xargs kill</code>|</p>
+<p>##文件</p>
+<table>
+<thead>
+<tr>
+<th>信息</th>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>软链</td>
+<td><code>ln -s /data/local/mysql5.6.16/bin/mysql /uer/bin</code></td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">系统</div><div class="line"></div><div class="line">　　# uname -a # 查看内核/操作系统/CPU信息</div><div class="line">　　# head -n 1 /etc/issue # 查看操作系统版本</div><div class="line">　　# cat /proc/cpuinfo # 查看CPU信息</div><div class="line">　　# hostname # 查看计算机名</div><div class="line">　　# lspci -tv # 列出所有PCI设备</div><div class="line">　　# lsusb -tv # 列出所有USB设备</div><div class="line">　　# lsmod # 列出加载的内核模块</div><div class="line">　　# env # 查看环境变量</div><div class="line"></div><div class="line">资源</div><div class="line"></div><div class="line">　　# free -m # 查看内存使用量和交换区使用量</div><div class="line">　　# df -h # 查看各分区使用情况</div><div class="line">　　# du -sh &lt;目录名&gt; # 查看指定目录的大小</div><div class="line">　　# grep MemTotal /proc/meminfo # 查看内存总量</div><div class="line">　　# grep MemFree /proc/meminfo # 查看空闲内存量</div><div class="line">　　# uptime # 查看系统运行时间、用户数、负载</div><div class="line">　　# cat /proc/loadavg # 查看系统负载</div><div class="line"></div><div class="line">磁盘和分区</div><div class="line"></div><div class="line">　　# mount | column -t # 查看挂接的分区状态</div><div class="line">　　# fdisk -l # 查看所有分区</div><div class="line">　　# swapon -s # 查看所有交换分区</div><div class="line">　　# hdparm -i /dev/hda # 查看磁盘参数（仅适用于IDE设备）</div><div class="line">　　# dmesg | grep IDE # 查看启动时IDE设备检测状况</div><div class="line"></div><div class="line">网络</div><div class="line"></div><div class="line">　　# ifconfig # 查看所有网络接口的属性</div><div class="line">　　# iptables -L # 查看防火墙设置</div><div class="line">　　# route -n # 查看路由表</div><div class="line">　　# netstat -lntp # 查看所有监听端口</div><div class="line">　　# netstat -antp # 查看所有已经建立的连接</div><div class="line">　　# netstat -s # 查看网络统计信息</div><div class="line"></div><div class="line">进程</div><div class="line"></div><div class="line">　　# ps -ef # 查看所有进程</div><div class="line">　　# top # 实时显示进程状态</div><div class="line"></div><div class="line">用户</div><div class="line"></div><div class="line">　　# w # 查看活动用户</div><div class="line">　　# id &lt;用户名&gt; # 查看指定用户信息</div><div class="line">　　# last # 查看用户登录日志</div><div class="line">　　# cut -d: -f1 /etc/passwd # 查看系统所有用户</div><div class="line">　　# cut -d: -f1 /etc/group # 查看系统所有组</div><div class="line">　　# crontab -l # 查看当前用户的计划任务</div><div class="line"></div><div class="line">服务</div><div class="line"></div><div class="line">　　# chkconfig --list # 列出所有系统服务</div><div class="line">　　# chkconfig --list | grep on # 列出所有启动的系统服务</div><div class="line"></div><div class="line">程序</div><div class="line"></div><div class="line">　　# rpm -qa # 查看所有安装的软件包</div></pre></td></tr></table></figure>
 
           
         
@@ -1714,245 +1953,6 @@ system call filters failed to install; check the logs and fix your configuration
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://shihp.github.io/2017/02/04/liunx/linux/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="walter">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/12179178?v=3&u=0c0d21c59b924f1bd9063d456652768791dacde3&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="五年">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/02/04/liunx/linux/" itemprop="url">linux</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-04T18:20:44+08:00">
-                2017-02-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/02/04/liunx/linux/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/02/04/liunx/linux/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="linux"><a href="#linux" class="headerlink" title="#linux"></a>#linux</h2><p>[TOC]</p>
-<p>##系统</p>
-<table>
-<thead>
-<tr>
-<th>信息</th>
-<th>命令</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>内核/操作系统/CPU信息</td>
-<td><code>uname</code></td>
-</tr>
-<tr>
-<td>操作系统版本</td>
-<td>head -n 1 /etc/issue</td>
-</tr>
-<tr>
-<td>计算机名</td>
-<td>hostname</td>
-</tr>
-<tr>
-<td>列出加载的内核模块</td>
-<td>lsmod</td>
-</tr>
-<tr>
-<td>查看环境变量</td>
-<td>env</td>
-</tr>
-<tr>
-<td>查看系统</td>
-<td>ps -p 1</td>
-</tr>
-</tbody>
-</table>
-<p>##资源</p>
-<table>
-<thead>
-<tr>
-<th>信息</th>
-<th>命令</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>查看内存使用量和交换区使用量</td>
-<td><code>free -g</code></td>
-</tr>
-<tr>
-<td>查看系统运行时间、用户数、负载</td>
-<td>uptime</td>
-</tr>
-<tr>
-<td>端口zan yong</td>
-<td>lsof -i</td>
-<td>grep 5601</td>
-</tr>
-<tr>
-<td>查看硬盘</td>
-<td><code>du -sh *</code> ``</td>
-</tr>
-</tbody>
-</table>
-<p>##用户</p>
-<table>
-<thead>
-<tr>
-<th>信息</th>
-<th>命令</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>新增</td>
-<td><code>adduser</code></td>
-<td>会自动为创建的用户指定主目录、系统shell版本，会在创建时输入用户密码。</td>
-</tr>
-<tr>
-<td>新增</td>
-<td><code>useradd</code></td>
-<td>需要使用参数选项指定上述基本设置，如果不使用任何参数，则创建的用户无密码、无主目录、没有指定shell版本</td>
-</tr>
-<tr>
-<td>添加root</td>
-<td></td>
-<td><code>vi /etc/sudoers.d/$user &amp;&amp; $user ALL=(ALL) ALL``chmod $user_file 400</code></td>
-</tr>
-<tr>
-<td>修改密码</td>
-<td><code>sudo passwd $suser</code></td>
-</tr>
-<tr>
-<td>修改用户权限</td>
-<td><code>sudo chown -R elasticsearch:elasticsearch /data/local/elasticsearch</code></td>
-</tr>
-</tbody>
-</table>
-<p>##进程<br>|信息|命令|描述<br>|:|<br>|kill|<code>ps -ef | grep xmpp.php | grep -v grep | awk &#39;{print $2}&#39; | xargs kill</code>|</p>
-<p>##文件</p>
-<table>
-<thead>
-<tr>
-<th>信息</th>
-<th>命令</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>软链</td>
-<td><code>ln -s /data/local/mysql5.6.16/bin/mysql /uer/bin</code></td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">系统</div><div class="line"></div><div class="line">　　# uname -a # 查看内核/操作系统/CPU信息</div><div class="line">　　# head -n 1 /etc/issue # 查看操作系统版本</div><div class="line">　　# cat /proc/cpuinfo # 查看CPU信息</div><div class="line">　　# hostname # 查看计算机名</div><div class="line">　　# lspci -tv # 列出所有PCI设备</div><div class="line">　　# lsusb -tv # 列出所有USB设备</div><div class="line">　　# lsmod # 列出加载的内核模块</div><div class="line">　　# env # 查看环境变量</div><div class="line"></div><div class="line">资源</div><div class="line"></div><div class="line">　　# free -m # 查看内存使用量和交换区使用量</div><div class="line">　　# df -h # 查看各分区使用情况</div><div class="line">　　# du -sh &lt;目录名&gt; # 查看指定目录的大小</div><div class="line">　　# grep MemTotal /proc/meminfo # 查看内存总量</div><div class="line">　　# grep MemFree /proc/meminfo # 查看空闲内存量</div><div class="line">　　# uptime # 查看系统运行时间、用户数、负载</div><div class="line">　　# cat /proc/loadavg # 查看系统负载</div><div class="line"></div><div class="line">磁盘和分区</div><div class="line"></div><div class="line">　　# mount | column -t # 查看挂接的分区状态</div><div class="line">　　# fdisk -l # 查看所有分区</div><div class="line">　　# swapon -s # 查看所有交换分区</div><div class="line">　　# hdparm -i /dev/hda # 查看磁盘参数（仅适用于IDE设备）</div><div class="line">　　# dmesg | grep IDE # 查看启动时IDE设备检测状况</div><div class="line"></div><div class="line">网络</div><div class="line"></div><div class="line">　　# ifconfig # 查看所有网络接口的属性</div><div class="line">　　# iptables -L # 查看防火墙设置</div><div class="line">　　# route -n # 查看路由表</div><div class="line">　　# netstat -lntp # 查看所有监听端口</div><div class="line">　　# netstat -antp # 查看所有已经建立的连接</div><div class="line">　　# netstat -s # 查看网络统计信息</div><div class="line"></div><div class="line">进程</div><div class="line"></div><div class="line">　　# ps -ef # 查看所有进程</div><div class="line">　　# top # 实时显示进程状态</div><div class="line"></div><div class="line">用户</div><div class="line"></div><div class="line">　　# w # 查看活动用户</div><div class="line">　　# id &lt;用户名&gt; # 查看指定用户信息</div><div class="line">　　# last # 查看用户登录日志</div><div class="line">　　# cut -d: -f1 /etc/passwd # 查看系统所有用户</div><div class="line">　　# cut -d: -f1 /etc/group # 查看系统所有组</div><div class="line">　　# crontab -l # 查看当前用户的计划任务</div><div class="line"></div><div class="line">服务</div><div class="line"></div><div class="line">　　# chkconfig --list # 列出所有系统服务</div><div class="line">　　# chkconfig --list | grep on # 列出所有启动的系统服务</div><div class="line"></div><div class="line">程序</div><div class="line"></div><div class="line">　　# rpm -qa # 查看所有安装的软件包</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2093,6 +2093,8 @@ system call filters failed to install; check the logs and fix your configuration
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     

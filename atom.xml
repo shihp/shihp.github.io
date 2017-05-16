@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shihp.github.io/"/>
-  <updated>2017-05-12T09:52:47.000Z</updated>
+  <updated>2017-05-16T14:39:01.000Z</updated>
   <id>https://shihp.github.io/</id>
   
   <author>
@@ -14,6 +14,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>php-redis-cli</title>
+    <link href="https://shihp.github.io/2017/05/16/redis/php-redis-cli/"/>
+    <id>https://shihp.github.io/2017/05/16/redis/php-redis-cli/</id>
+    <published>2017-05-16T14:20:44.000Z</published>
+    <updated>2017-05-16T14:39:01.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>#php redis cli</p>
+<p>##建立redis集群<br>最近公司的redis主从系统崩溃了，然后开始研究下redis的集群<br>redis的集群比较简单，或者说是redis官方目前提供的集群方案应非常成熟了：</p>
+<p>建立集群：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">cd redis-3.2.8/utils/create-cluster/</div><div class="line"></div><div class="line">./create-cluster start</div><div class="line">./create-cluster create</div></pre></td></tr></table></figure></p>
+<p>完成。<br>详细的redis集群搭建可以参考我的<a href="https://shihp.github.io/2017/05/05/redis/redis%E9%9B%86%E7%BE%A4/">另一篇博客</a>。</p>
+<p>##phprediscli</p>
+<ol>
+<li>选择合适的<a href="https://redis.io/clients" target="_blank" rel="external">redis cli</a></li>
+<li>以<a href="https://github.com/nrk/predis" target="_blank" rel="external">predis</a>为例<ol>
+<li>从githup clone项目</li>
+<li>通过composer解决项目加载 依赖 的问题 <code>composer install -vvv</code></li>
+<li>代码实现</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">include &apos;autoload.php&apos;;</div><div class="line"></div><div class="line">$parameters = [&apos;tcp://127.0.0.1:3000&apos;];</div><div class="line">$options = [&apos;cluster&apos; =&gt; &apos;redis&apos;];</div><div class="line"></div><div class="line">$client = new Predis\Client($parameters, $options);</div><div class="line"></div><div class="line">$time = explode(&apos; &apos;,microtime());</div><div class="line">$start = $time[1].substr($time[0],1);</div><div class="line">echo $start . PHP_EOL;</div><div class="line"></div><div class="line"></div><div class="line">for ($i = 0; $i &lt; 100000; $i++) &#123;</div><div class="line">    $key = mt_rand(1000000, 2000000);</div><div class="line">    $client-&gt;set(&apos;KEY&apos; . $key, &apos;VALUE:&apos; . $key);</div><div class="line">&#125;</div><div class="line"></div><div class="line">$client-&gt;quit();</div><div class="line">$time = explode(&apos; &apos;,microtime());</div><div class="line">$end = $time[1].substr($time[0],1);</div><div class="line">echo $end . PHP_EOL;</div><div class="line">echo &apos;一共耗时：&apos; .bcsub($end,$start,3);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>在写入大概1000万数据后，开始出现的错误，因为我配置开aof。。<br>19276:M 16 May 15:36:28.060 * Asynchronous AOF fsync is taking too long (disk is busy?). Writing the AOF buffer without waiting for fsync to complete, this may slow down Redis.</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#php redis cli&lt;/p&gt;
+&lt;p&gt;##建立redis集群&lt;br&gt;最近公司的redis主从系统崩溃了，然后开始研究下redis的集群&lt;br&gt;redis的集群比较简单，或者说是redis官方目前提供的集群方案应非常成熟了：&lt;/p&gt;
+&lt;p&gt;建立集群：&lt;br&gt;&lt;figur
+    
+    </summary>
+    
+    
+      <category term="redis" scheme="https://shihp.github.io/tags/redis/"/>
+    
+  </entry>
   
   <entry>
     <title>mysql优化</title>

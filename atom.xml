@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shihp.github.io/"/>
-  <updated>2017-05-16T14:39:01.000Z</updated>
+  <updated>2017-12-11T02:28:02.805Z</updated>
   <id>https://shihp.github.io/</id>
   
   <author>
@@ -14,6 +14,45 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://shihp.github.io/2017/12/11/elk/ELK6.0%20KAFKA%20%E6%90%AD%E5%BB%BA/"/>
+    <id>https://shihp.github.io/2017/12/11/elk/ELK6.0 KAFKA 搭建/</id>
+    <published>2017-12-11T02:28:02.804Z</published>
+    <updated>2017-12-11T02:28:02.805Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="ELK6-0-KAFKA-搭建"><a href="#ELK6-0-KAFKA-搭建" class="headerlink" title="#ELK6.0 KAFKA 搭建"></a>#ELK6.0 KAFKA 搭建</h2><p>[toc]</p>
+<blockquote>
+<p>本次启用6.0.0版本搭建ELK<br>公司网络的影响,所执行的安装包均为离线版本</p>
+</blockquote>
+<p>##ELK</p>
+<p>###下载(版本统一6.0.0):<br><a href="https://www.elastic.co/cn/downloads" target="_blank" rel="external">filebeat<br>elasticsearch<br>logstash<br>x-pack</a></p>
+<p>###配置文件<br><code>因为公司信息安全原因 暂不提供 有需要的可以私聊我</code><br><a href="#tower#">elasticsearch.yml<br>kafka_test.conf<br>kibana.conf<br>kibana.yml<br>kibana-nginx.conf</a></p>
+<p>###插件下载<br><a href="https://github.com/logstash-plugins/logstash-input-kafka" target="_blank" rel="external">logstash-input-kafka</a></p>
+<p>依赖关系:<br>ruby(&gt;2.0.0)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">sudo yum remove ruby ruby-devel</div><div class="line">sudo yum groupinstall &quot;Development Tools&quot;</div><div class="line">sudo yum install openssl-devel</div><div class="line">wget http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.2.tar.gz</div><div class="line">tar xvfvz ruby-2.1.2.tar.gz &amp;&amp; cd ruby-2.1.2</div><div class="line">./configure</div><div class="line">make &amp;&amp; make install</div><div class="line"></div><div class="line">-- upgrange</div><div class="line">sudo gem update --system</div><div class="line">sudo gem install bundler</div><div class="line"></div><div class="line">--check</div><div class="line">ruby --version</div><div class="line">rubygems --version</div></pre></td></tr></table></figure></p>
+<p><a href="https://rvm.io/rvm/install" target="_blank" rel="external">rvm</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">\curl -sSL https://get.rvm.io | bash</div><div class="line">rvm install jruby-1.7.19</div><div class="line">rvm use jruby-1.7.19</div><div class="line">gem install bundler</div><div class="line">bundle install</div></pre></td></tr></table></figure></p>
+<p>插件本地安装命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">vim /root/logstash-6.0.0/Gemfile</div><div class="line">gem &quot;logstash-input-kafka&quot;, :path =&gt; &quot;/root/logstash-input-kafka-master&quot;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/root/logstash-6.0.0/bin/logstash-plugin update</div></pre></td></tr></table></figure>
+<p>###命令配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"> vim ~/.bash_cmd </div><div class="line"> </div><div class="line">alias filebeat=&quot;nohup /root/filebeat-6.0.0-linux-x86_64/filebeat -e -c /root/filebeat-6.0.0-linux-x86_64/filebeat.yml -d &quot;publish&quot; &amp;&gt;&gt;/data/log/filebeat.log &amp;&quot;</div><div class="line">alias filebeat_kill=&quot;ps -ef | grep filebeat | grep -v grep | awk &apos;&#123;print $2&#125;&apos; | xargs kill&quot;</div><div class="line"></div><div class="line"></div><div class="line">alias kibana=&quot;nohup /root/kibana-6.0.0-linux-x86_64/bin/kibana &amp;&gt;&gt;/data/log/kibana.log &amp;&quot;</div><div class="line">alias kibana_kill=&quot;ps -ef | grep kibana | grep -v grep | awk &apos;&#123;print $2&#125;&apos; | xargs kill&quot;</div><div class="line"></div><div class="line">alias logstash_kafka=&quot;nohup /root/logstash-6.0.0/bin/logstash -f /root/logstash-6.0.0/config/kafka_test.conf  &amp;&gt;&gt;/data/log/logstash-kafka.log &amp;&quot;</div><div class="line">alias logstash_kafka_kill=&quot;ps -ef | grep kafka_test.conf | grep -v grep | awk &apos;&#123;print $2&#125;&apos; | xargs kill&quot;</div><div class="line"></div><div class="line">alias elastic=&quot;nohup /home/es/elasticsearch-6.0.0/bin/elasticsearch &amp;&gt;&gt;/data/log/elastic.log &amp;&quot;</div><div class="line">alias elastic_kill=&quot;ps -ef | grep elasticsearch | grep -v grep | awk &apos;&#123;print $2&#125;&apos; | xargs kill&quot;</div></pre></td></tr></table></figure></p>
+<p>##kafka</p>
+<p>###下载(1.0.0)<br><a href="https://kafka.apache.org/downloads" target="_blank" rel="external">kafka</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1.java.net.UnknownHostException: test-185: test-185: 未知的名称或服务</div><div class="line">vim /etc/hosts </div><div class="line">添加: `10.1.1.1   test-185`</div></pre></td></tr></table></figure></p>
+<p>##php 扩展</p>
+<p>###下载<br><a href="http://pecl.php.net/" target="_blank" rel="external">rdkafka 3.0.5<br>zlib 1.2.7<br>zookeeper 0.4.0  (libzookeeper version    3.4.10)
+</a></p>
+<p>##composer 库依赖</p>
+<p>###下载<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;require-dev&quot;: &#123;</div><div class="line">        &quot;eaglewu/swoole-ide-helper&quot;: &quot;dev-master&quot;,</div><div class="line">        &quot;sneakybobito/phalcon-stubs&quot;: &quot;3.0.1&quot;,</div><div class="line">    &#125;,</div><div class="line">    &quot;require&quot;: &#123;</div><div class="line">        &quot;monolog/monolog&quot;: &quot;^1.23&quot;,</div><div class="line">        &quot;propel/propel&quot;: &quot;~2.0@dev&quot;,</div><div class="line">        &quot;kwn/php-rdkafka-stubs&quot;: &quot;^1.0&quot;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;ELK6-0-KAFKA-搭建&quot;&gt;&lt;a href=&quot;#ELK6-0-KAFKA-搭建&quot; class=&quot;headerlink&quot; title=&quot;#ELK6.0 KAFKA 搭建&quot;&gt;&lt;/a&gt;#ELK6.0 KAFKA 搭建&lt;/h2&gt;&lt;p&gt;[toc]&lt;/p&gt;
+&lt;block
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>php-redis-cli</title>
@@ -287,6 +326,30 @@
   </entry>
   
   <entry>
+    <title>mac vim 设置</title>
+    <link href="https://shihp.github.io/2017/03/21/liunx/vim/"/>
+    <id>https://shihp.github.io/2017/03/21/liunx/vim/</id>
+    <published>2017-03-21T10:20:44.000Z</published>
+    <updated>2017-05-12T09:52:13.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>#mac vim 设置</p>
+<p><code>vi ~/.vimrc</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">set ai                  &quot; auto indenting</div><div class="line">set history=100         &quot; keep 100 lines of history</div><div class="line">set ruler               &quot; show the cursor position</div><div class="line">syntax on               &quot; syntax highlighting</div><div class="line">set hlsearch            &quot; highlight the last searched term</div><div class="line">filetype plugin on      &quot; use the file type plugins</div><div class="line"></div><div class="line">&quot; When editing a file, always jump to the last cursor position</div><div class="line">autocmd BufReadPost *</div><div class="line">\ if ! exists(&quot;g:leave_my_cursor_position_alone&quot;) |</div><div class="line">\ if line(&quot;&apos;\&quot;&quot;) &gt; 0 &amp;&amp; line (&quot;&apos;\&quot;&quot;) &lt;= line(&quot;$&quot;) |</div><div class="line">\ exe &quot;normal g&apos;\&quot;&quot; |</div><div class="line">\ endif |</div><div class="line">\ endif</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#mac vim 设置&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;vi ~/.vimrc&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/d
+    
+    </summary>
+    
+    
+      <category term="vim" scheme="https://shihp.github.io/tags/vim/"/>
+    
+  </entry>
+  
+  <entry>
     <title>vagrant 虚拟机工具</title>
     <link href="https://shihp.github.io/2017/03/21/liunx/vagrant/"/>
     <id>https://shihp.github.io/2017/03/21/liunx/vagrant/</id>
@@ -316,26 +379,29 @@
   </entry>
   
   <entry>
-    <title>mac vim 设置</title>
-    <link href="https://shihp.github.io/2017/03/21/liunx/vim/"/>
-    <id>https://shihp.github.io/2017/03/21/liunx/vim/</id>
-    <published>2017-03-21T10:20:44.000Z</published>
-    <updated>2017-05-12T09:52:13.000Z</updated>
+    <title>auth_basic</title>
+    <link href="https://shihp.github.io/2017/02/04/nginx/auth_basic/"/>
+    <id>https://shihp.github.io/2017/02/04/nginx/auth_basic/</id>
+    <published>2017-02-04T10:20:44.000Z</published>
+    <updated>2017-05-12T09:52:57.000Z</updated>
     
-    <content type="html"><![CDATA[<p>#mac vim 设置</p>
-<p><code>vi ~/.vimrc</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">set ai                  &quot; auto indenting</div><div class="line">set history=100         &quot; keep 100 lines of history</div><div class="line">set ruler               &quot; show the cursor position</div><div class="line">syntax on               &quot; syntax highlighting</div><div class="line">set hlsearch            &quot; highlight the last searched term</div><div class="line">filetype plugin on      &quot; use the file type plugins</div><div class="line"></div><div class="line">&quot; When editing a file, always jump to the last cursor position</div><div class="line">autocmd BufReadPost *</div><div class="line">\ if ! exists(&quot;g:leave_my_cursor_position_alone&quot;) |</div><div class="line">\ if line(&quot;&apos;\&quot;&quot;) &gt; 0 &amp;&amp; line (&quot;&apos;\&quot;&quot;) &lt;= line(&quot;$&quot;) |</div><div class="line">\ exe &quot;normal g&apos;\&quot;&quot; |</div><div class="line">\ endif |</div><div class="line">\ endif</div></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>#nginx auth_basic 配置</p>
+<p>nginx .conf 文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">upstream kibana5 &#123;</div><div class="line">    server localhost:5601 fail_timeout=5;</div><div class="line">    keepalive 64;</div><div class="line">&#125;</div><div class="line">server &#123;</div><div class="line">    listen               5602;</div><div class="line">    server_name          kibana_server.com;</div><div class="line">    access_log           /data/log/nginx/kibana.srv-log-dev.log;</div><div class="line">    error_log            /data/log/nginx/kibana.srv-log-dev.error.log;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">         auth_basic &quot;secret&quot;;</div><div class="line">         auth_basic_user_file /data/local/nginx/passwd.db;</div><div class="line">         proxy_pass           http://localhost:5601;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><em>配置的选项</em><br><code>auth_basic &quot;secret&quot;;
+ auth_basic_user_file /data/local/nginx/passwd.db;</code></p>
+<p><em>auth文件</em><br>/data/local/nginx/passwd.db</p>
+<p>我使用的是nginx服务器：为了方便直接使用在线工具生成的，格式如下：<br>user:passwd</p>
+]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;#mac vim 设置&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;vi ~/.vimrc&lt;/code&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/d
+      &lt;p&gt;#nginx auth_basic 配置&lt;/p&gt;
+&lt;p&gt;nginx .conf 文件&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div
     
     </summary>
     
     
-      <category term="vim" scheme="https://shihp.github.io/tags/vim/"/>
+      <category term="basrc" scheme="https://shihp.github.io/tags/basrc/"/>
     
   </entry>
   
@@ -344,7 +410,7 @@
     <link href="https://shihp.github.io/2017/02/04/liunx/linux/"/>
     <id>https://shihp.github.io/2017/02/04/liunx/linux/</id>
     <published>2017-02-04T10:20:44.000Z</published>
-    <updated>2017-05-12T09:51:59.000Z</updated>
+    <updated>2017-05-21T08:53:44.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="linux"><a href="#linux" class="headerlink" title="#linux"></a>#linux</h2><p>[TOC]</p>
 <p>##系统</p>
@@ -479,33 +545,6 @@
     
     
       <category term="linux" scheme="https://shihp.github.io/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>auth_basic</title>
-    <link href="https://shihp.github.io/2017/02/04/nginx/auth_basic/"/>
-    <id>https://shihp.github.io/2017/02/04/nginx/auth_basic/</id>
-    <published>2017-02-04T10:20:44.000Z</published>
-    <updated>2017-05-12T09:52:57.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>#nginx auth_basic 配置</p>
-<p>nginx .conf 文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">upstream kibana5 &#123;</div><div class="line">    server localhost:5601 fail_timeout=5;</div><div class="line">    keepalive 64;</div><div class="line">&#125;</div><div class="line">server &#123;</div><div class="line">    listen               5602;</div><div class="line">    server_name          kibana_server.com;</div><div class="line">    access_log           /data/log/nginx/kibana.srv-log-dev.log;</div><div class="line">    error_log            /data/log/nginx/kibana.srv-log-dev.error.log;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">         auth_basic &quot;secret&quot;;</div><div class="line">         auth_basic_user_file /data/local/nginx/passwd.db;</div><div class="line">         proxy_pass           http://localhost:5601;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><em>配置的选项</em><br><code>auth_basic &quot;secret&quot;;
- auth_basic_user_file /data/local/nginx/passwd.db;</code></p>
-<p><em>auth文件</em><br>/data/local/nginx/passwd.db</p>
-<p>我使用的是nginx服务器：为了方便直接使用在线工具生成的，格式如下：<br>user:passwd</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;#nginx auth_basic 配置&lt;/p&gt;
-&lt;p&gt;nginx .conf 文件&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div
-    
-    </summary>
-    
-    
-      <category term="basrc" scheme="https://shihp.github.io/tags/basrc/"/>
     
   </entry>
   

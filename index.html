@@ -327,6 +327,159 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://shihp.github.io/2017/12/11/elk/ELK6.0 KAFKA 搭建/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="walter">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/12179178?v=3&u=0c0d21c59b924f1bd9063d456652768791dacde3&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="五年">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/11/elk/ELK6.0 KAFKA 搭建/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-11T10:28:02+08:00">
+                2017-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/11/elk/ELK6.0 KAFKA 搭建/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/12/11/elk/ELK6.0 KAFKA 搭建/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/12/11/elk/ELK6.0 KAFKA 搭建/" class="leancloud_visitors" data-flag-title="">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="ELK6-0-KAFKA-搭建"><a href="#ELK6-0-KAFKA-搭建" class="headerlink" title="#ELK6.0 KAFKA 搭建"></a>#ELK6.0 KAFKA 搭建</h2><p>[toc]</p>
+<blockquote>
+<p>本次启用6.0.0版本搭建ELK<br>公司网络的影响,所执行的安装包均为离线版本</p>
+</blockquote>
+<p>##ELK</p>
+<p>###下载(版本统一6.0.0):<br><a href="https://www.elastic.co/cn/downloads" target="_blank" rel="external">filebeat<br>elasticsearch<br>logstash<br>x-pack</a></p>
+<p>###配置文件<br><code>因为公司信息安全原因 暂不提供 有需要的可以私聊我</code><br><a href="#tower#">elasticsearch.yml<br>kafka_test.conf<br>kibana.conf<br>kibana.yml<br>kibana-nginx.conf</a></p>
+<p>###插件下载<br><a href="https://github.com/logstash-plugins/logstash-input-kafka" target="_blank" rel="external">logstash-input-kafka</a></p>
+<p>依赖关系:<br>ruby(&gt;2.0.0)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">sudo yum remove ruby ruby-devel</div><div class="line">sudo yum groupinstall &quot;Development Tools&quot;</div><div class="line">sudo yum install openssl-devel</div><div class="line">wget http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.2.tar.gz</div><div class="line">tar xvfvz ruby-2.1.2.tar.gz &amp;&amp; cd ruby-2.1.2</div><div class="line">./configure</div><div class="line">make &amp;&amp; make install</div><div class="line"></div><div class="line">-- upgrange</div><div class="line">sudo gem update --system</div><div class="line">sudo gem install bundler</div><div class="line"></div><div class="line">--check</div><div class="line">ruby --version</div><div class="line">rubygems --version</div></pre></td></tr></table></figure></p>
+<p><a href="https://rvm.io/rvm/install" target="_blank" rel="external">rvm</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">\curl -sSL https://get.rvm.io | bash</div><div class="line">rvm install jruby-1.7.19</div><div class="line">rvm use jruby-1.7.19</div><div class="line">gem install bundler</div><div class="line">bundle install</div></pre></td></tr></table></figure></p>
+<p>插件本地安装命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">vim /root/logstash-6.0.0/Gemfile</div><div class="line">gem &quot;logstash-input-kafka&quot;, :path =&gt; &quot;/root/logstash-input-kafka-master&quot;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/root/logstash-6.0.0/bin/logstash-plugin update</div></pre></td></tr></table></figure>
+<p>###命令配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"> vim ~/.bash_cmd </div><div class="line"> </div><div class="line">alias filebeat=&quot;nohup /root/filebeat-6.0.0-linux-x86_64/filebeat -e -c /root/filebeat-6.0.0-linux-x86_64/filebeat.yml -d &quot;publish&quot; &amp;&gt;&gt;/data/log/filebeat.log &amp;&quot;</div><div class="line">alias filebeat_kill=&quot;ps -ef | grep filebeat | grep -v grep | awk &apos;&#123;print $2&#125;&apos; | xargs kill&quot;</div><div class="line"></div><div class="line"></div><div class="line">alias kibana=&quot;nohup /root/kibana-6.0.0-linux-x86_64/bin/kibana &amp;&gt;&gt;/data/log/kibana.log &amp;&quot;</div><div class="line">alias kibana_kill=&quot;ps -ef | grep kibana | grep -v grep | awk &apos;&#123;print $2&#125;&apos; | xargs kill&quot;</div><div class="line"></div><div class="line">alias logstash_kafka=&quot;nohup /root/logstash-6.0.0/bin/logstash -f /root/logstash-6.0.0/config/kafka_test.conf  &amp;&gt;&gt;/data/log/logstash-kafka.log &amp;&quot;</div><div class="line">alias logstash_kafka_kill=&quot;ps -ef | grep kafka_test.conf | grep -v grep | awk &apos;&#123;print $2&#125;&apos; | xargs kill&quot;</div><div class="line"></div><div class="line">alias elastic=&quot;nohup /home/es/elasticsearch-6.0.0/bin/elasticsearch &amp;&gt;&gt;/data/log/elastic.log &amp;&quot;</div><div class="line">alias elastic_kill=&quot;ps -ef | grep elasticsearch | grep -v grep | awk &apos;&#123;print $2&#125;&apos; | xargs kill&quot;</div></pre></td></tr></table></figure></p>
+<p>##kafka</p>
+<p>###下载(1.0.0)<br><a href="https://kafka.apache.org/downloads" target="_blank" rel="external">kafka</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1.java.net.UnknownHostException: test-185: test-185: 未知的名称或服务</div><div class="line">vim /etc/hosts </div><div class="line">添加: `10.1.1.1   test-185`</div></pre></td></tr></table></figure></p>
+<p>##php 扩展</p>
+<p>###下载<br><a href="http://pecl.php.net/" target="_blank" rel="external">rdkafka 3.0.5<br>zlib 1.2.7<br>zookeeper 0.4.0  (libzookeeper version    3.4.10)
+</a></p>
+<p>##composer 库依赖</p>
+<p>###下载<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;require-dev&quot;: &#123;</div><div class="line">        &quot;eaglewu/swoole-ide-helper&quot;: &quot;dev-master&quot;,</div><div class="line">        &quot;sneakybobito/phalcon-stubs&quot;: &quot;3.0.1&quot;,</div><div class="line">    &#125;,</div><div class="line">    &quot;require&quot;: &#123;</div><div class="line">        &quot;monolog/monolog&quot;: &quot;^1.23&quot;,</div><div class="line">        &quot;propel/propel&quot;: &quot;~2.0@dev&quot;,</div><div class="line">        &quot;kwn/php-rdkafka-stubs&quot;: &quot;^1.0&quot;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://shihp.github.io/2017/05/16/redis/php-redis-cli/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1041,6 +1194,141 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://shihp.github.io/2017/03/21/liunx/vim/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="walter">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/12179178?v=3&u=0c0d21c59b924f1bd9063d456652768791dacde3&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="五年">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/21/liunx/vim/" itemprop="url">mac vim 设置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-21T18:20:44+08:00">
+                2017-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/21/liunx/vim/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/03/21/liunx/vim/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/03/21/liunx/vim/" class="leancloud_visitors" data-flag-title="mac vim 设置">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#mac vim 设置</p>
+<p><code>vi ~/.vimrc</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">set ai                  &quot; auto indenting</div><div class="line">set history=100         &quot; keep 100 lines of history</div><div class="line">set ruler               &quot; show the cursor position</div><div class="line">syntax on               &quot; syntax highlighting</div><div class="line">set hlsearch            &quot; highlight the last searched term</div><div class="line">filetype plugin on      &quot; use the file type plugins</div><div class="line"></div><div class="line">&quot; When editing a file, always jump to the last cursor position</div><div class="line">autocmd BufReadPost *</div><div class="line">\ if ! exists(&quot;g:leave_my_cursor_position_alone&quot;) |</div><div class="line">\ if line(&quot;&apos;\&quot;&quot;) &gt; 0 &amp;&amp; line (&quot;&apos;\&quot;&quot;) &lt;= line(&quot;$&quot;) |</div><div class="line">\ exe &quot;normal g&apos;\&quot;&quot; |</div><div class="line">\ endif |</div><div class="line">\ endif</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://shihp.github.io/2017/03/21/liunx/vagrant/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1183,7 +1471,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://shihp.github.io/2017/03/21/liunx/vim/">
+    <link itemprop="mainEntityOfPage" href="https://shihp.github.io/2017/02/04/nginx/auth_basic/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="walter">
@@ -1202,7 +1490,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/21/liunx/vim/" itemprop="url">mac vim 设置</a></h1>
+                <a class="post-title-link" href="/2017/02/04/nginx/auth_basic/" itemprop="url">auth_basic</a></h1>
         
 
         <div class="post-meta">
@@ -1214,8 +1502,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-21T18:20:44+08:00">
-                2017-03-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-04T18:20:44+08:00">
+                2017-02-04
               </time>
             
 
@@ -1233,9 +1521,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/21/liunx/vim/#comments" itemprop="discussionUrl">
+                <a href="/2017/02/04/nginx/auth_basic/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/03/21/liunx/vim/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/02/04/nginx/auth_basic/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1243,7 +1531,7 @@
 
           
           
-             <span id="/2017/03/21/liunx/vim/" class="leancloud_visitors" data-flag-title="mac vim 设置">
+             <span id="/2017/02/04/nginx/auth_basic/" class="leancloud_visitors" data-flag-title="auth_basic">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1273,9 +1561,13 @@
       
         
           
-            <p>#mac vim 设置</p>
-<p><code>vi ~/.vimrc</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">set ai                  &quot; auto indenting</div><div class="line">set history=100         &quot; keep 100 lines of history</div><div class="line">set ruler               &quot; show the cursor position</div><div class="line">syntax on               &quot; syntax highlighting</div><div class="line">set hlsearch            &quot; highlight the last searched term</div><div class="line">filetype plugin on      &quot; use the file type plugins</div><div class="line"></div><div class="line">&quot; When editing a file, always jump to the last cursor position</div><div class="line">autocmd BufReadPost *</div><div class="line">\ if ! exists(&quot;g:leave_my_cursor_position_alone&quot;) |</div><div class="line">\ if line(&quot;&apos;\&quot;&quot;) &gt; 0 &amp;&amp; line (&quot;&apos;\&quot;&quot;) &lt;= line(&quot;$&quot;) |</div><div class="line">\ exe &quot;normal g&apos;\&quot;&quot; |</div><div class="line">\ endif |</div><div class="line">\ endif</div></pre></td></tr></table></figure>
+            <p>#nginx auth_basic 配置</p>
+<p>nginx .conf 文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">upstream kibana5 &#123;</div><div class="line">    server localhost:5601 fail_timeout=5;</div><div class="line">    keepalive 64;</div><div class="line">&#125;</div><div class="line">server &#123;</div><div class="line">    listen               5602;</div><div class="line">    server_name          kibana_server.com;</div><div class="line">    access_log           /data/log/nginx/kibana.srv-log-dev.log;</div><div class="line">    error_log            /data/log/nginx/kibana.srv-log-dev.error.log;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">         auth_basic &quot;secret&quot;;</div><div class="line">         auth_basic_user_file /data/local/nginx/passwd.db;</div><div class="line">         proxy_pass           http://localhost:5601;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><em>配置的选项</em><br><code>auth_basic &quot;secret&quot;;
+ auth_basic_user_file /data/local/nginx/passwd.db;</code></p>
+<p><em>auth文件</em><br>/data/local/nginx/passwd.db</p>
+<p>我使用的是nginx服务器：为了方便直接使用在线工具生成的，格式如下：<br>user:passwd</p>
+
           
         
       
@@ -1568,145 +1860,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://shihp.github.io/2017/02/04/nginx/auth_basic/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="walter">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/12179178?v=3&u=0c0d21c59b924f1bd9063d456652768791dacde3&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="五年">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/02/04/nginx/auth_basic/" itemprop="url">auth_basic</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-04T18:20:44+08:00">
-                2017-02-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/02/04/nginx/auth_basic/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/02/04/nginx/auth_basic/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/02/04/nginx/auth_basic/" class="leancloud_visitors" data-flag-title="auth_basic">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#nginx auth_basic 配置</p>
-<p>nginx .conf 文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">upstream kibana5 &#123;</div><div class="line">    server localhost:5601 fail_timeout=5;</div><div class="line">    keepalive 64;</div><div class="line">&#125;</div><div class="line">server &#123;</div><div class="line">    listen               5602;</div><div class="line">    server_name          kibana_server.com;</div><div class="line">    access_log           /data/log/nginx/kibana.srv-log-dev.log;</div><div class="line">    error_log            /data/log/nginx/kibana.srv-log-dev.error.log;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">         auth_basic &quot;secret&quot;;</div><div class="line">         auth_basic_user_file /data/local/nginx/passwd.db;</div><div class="line">         proxy_pass           http://localhost:5601;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><em>配置的选项</em><br><code>auth_basic &quot;secret&quot;;
- auth_basic_user_file /data/local/nginx/passwd.db;</code></p>
-<p><em>auth文件</em><br>/data/local/nginx/passwd.db</p>
-<p>我使用的是nginx服务器：为了方便直接使用在线工具生成的，格式如下：<br>user:passwd</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://shihp.github.io/2017/02/04/nginx/nginx500错误/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1837,152 +1990,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://shihp.github.io/2017/02/04/elk/ELK-配置文件/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="walter">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/12179178?v=3&u=0c0d21c59b924f1bd9063d456652768791dacde3&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="五年">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/02/04/elk/ELK-配置文件/" itemprop="url">ELK 配置文件</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-04T18:20:44+08:00">
-                2017-02-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/02/04/elk/ELK-配置文件/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/02/04/elk/ELK-配置文件/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2017/02/04/elk/ELK-配置文件/" class="leancloud_visitors" data-flag-title="ELK 配置文件">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="ELK-配置文件"><a href="#ELK-配置文件" class="headerlink" title="#ELK 配置文件"></a>#ELK 配置文件</h2><p>[toc]</p>
-<p>##配置文件</p>
-<p>###nginx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">upstream kibana5 &#123;</div><div class="line">    server localhost:5601 fail_timeout=5;</div><div class="line">    keepalive 64;</div><div class="line">&#125;</div><div class="line">server &#123;</div><div class="line">    listen               5602;</div><div class="line">    server_name          kibana_server.com;</div><div class="line">    access_log           /data/log/nginx/kibana.srv-log-dev.log;</div><div class="line">    error_log            /data/log/nginx/kibana.srv-log-dev.error.log;</div><div class="line"></div><div class="line">#    ssl                  on;</div><div class="line">#    ssl_certificate      /etc/nginx/ssl/all.crt;</div><div class="line">#    ssl_certificate_key  /etc/nginx/ssl/server.key;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">#        root   /var/www/kibana;</div><div class="line">#        index  index.html  index.htm;</div><div class="line">         proxy_pass           http://localhost:5601;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>###文件地址</p>
-<blockquote>
-<p>/etc/kibana/kibana.yml<br>/data/local/elasticsearch/config/elasticsearch.yml<br>/data/local/filebeat/filebeat.yml </p>
-</blockquote>
-<p>###logstash.conf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">input &#123;</div><div class="line">  beats &#123;</div><div class="line">    port =&gt; 5044</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">filter &#123;</div><div class="line">    grok &#123;</div><div class="line">        add_field =&gt; [ &quot;received_from&quot;, &quot;%&#123;from_machine&#125;&quot; ] </div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">output &#123;</div><div class="line">    file &#123;</div><div class="line">        path           =&gt; &quot;/data/log/logstash/all.log&quot;</div><div class="line">        codec          =&gt; line &#123;format =&gt;&quot;$%&#123;from_machine&#125; %&#123;message&#125;&quot;&#125;</div><div class="line">        flush_interval =&gt; 0</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>###filebeat.yml(收集)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div></pre></td><td class="code"><pre><div class="line">###################### Filebeat Configuration Example #########################</div><div class="line"></div><div class="line"># This file is an example configuration file highlighting only the most common</div><div class="line"># options. The filebeat.full.yml file from the same directory contains all the</div><div class="line"># supported options with more comments. You can use it as a reference.</div><div class="line">#</div><div class="line"># You can find the full configuration reference here:</div><div class="line"># https://www.elastic.co/guide/en/beats/filebeat/index.html</div><div class="line"></div><div class="line">#=========================== Filebeat prospectors =============================</div><div class="line"></div><div class="line">filebeat.prospectors:</div><div class="line"></div><div class="line"># Each - is a prospector. Most options can be set at the prospector level, so</div><div class="line"># you can use different prospectors for various configurations.</div><div class="line"># Below are the prospector specific configurations.</div><div class="line"></div><div class="line">- input_type: log</div><div class="line"></div><div class="line">  # Paths that should be crawled and fetched. Glob based paths.</div><div class="line">  # 收集的日志目录</div><div class="line">  paths:</div><div class="line">    #- /var/log/*.log</div><div class="line">    #</div><div class="line">    #- c:\programdata\elasticsearch\logs\*</div><div class="line">     - /data/log/api/api.log </div><div class="line">     - /data/log/php/php.log</div><div class="line"></div><div class="line">  # Exclude lines. A list of regular expressions to match. It drops the lines that are</div><div class="line">  # matching any regular expression from the list.</div><div class="line">  #exclude_lines: [&quot;^DBG&quot;]</div><div class="line"></div><div class="line">  # Include lines. A list of regular expressions to match. It exports the lines that are</div><div class="line">  # matching any regular expression from the list.</div><div class="line">  #include_lines: [&quot;^ERR&quot;, &quot;^WARN&quot;]</div><div class="line"></div><div class="line">  # Exclude files. A list of regular expressions to match. Filebeat drops the files that</div><div class="line">  # are matching any regular expression from the list. By default, no files are dropped.</div><div class="line">  #exclude_files: [&quot;.gz$&quot;]</div><div class="line"></div><div class="line">  # Optional additional fields. These field can be freely picked</div><div class="line">  # to add additional information to the crawled log files for filtering</div><div class="line">  #fields:</div><div class="line">  #  level: debug</div><div class="line">  #  review: 1</div><div class="line"></div><div class="line">  ### Multiline options</div><div class="line"></div><div class="line">  # Mutiline can be used for log messages spanning multiple lines. This is common</div><div class="line">  # for Java Stack Traces or C-Line Continuation</div><div class="line"></div><div class="line">  # The regexp Pattern that has to be matched. The example pattern matches all lines starting with [</div><div class="line">  #multiline.pattern: ^\[</div><div class="line"></div><div class="line">  # Defines if the pattern set under pattern should be negated or not. Default is false.</div><div class="line">  #multiline.negate: false</div><div class="line"></div><div class="line">  # Match can be set to &quot;after&quot; or &quot;before&quot;. It is used to define if lines should be append to a pattern</div><div class="line">  # that was (not) matched before or after or as long as a pattern is not matched based on negate.</div><div class="line">  # Note: After is the equivalent to previous and before is the equivalent to to next in Logstash</div><div class="line">  #multiline.match: after</div><div class="line"></div><div class="line"></div><div class="line">#================================ General =====================================</div><div class="line"></div><div class="line"># The name of the shipper that publishes the network data. It can be used to group</div><div class="line"># all the transactions sent by a single shipper in the web interface.</div><div class="line">#name:</div><div class="line"></div><div class="line"># The tags of the shipper are included in their own field with each</div><div class="line"># transaction published.</div><div class="line">#tags: [&quot;service-X&quot;, &quot;web-tier&quot;]</div><div class="line"></div><div class="line"># Optional fields that you can specify to add additional information to the</div><div class="line"># output.</div><div class="line">#fields:</div><div class="line">#  env: staging</div><div class="line"></div><div class="line">#================================ Outputs =====================================</div><div class="line"></div><div class="line"># Configure what outputs to use when sending the data collected by the beat.</div><div class="line"># Multiple outputs may be used.</div><div class="line"></div><div class="line">#-------------------------- Elasticsearch output ------------------------------</div><div class="line">#output.elasticsearch:</div><div class="line">  # Array of hosts to connect to.</div><div class="line">#  hosts: [&quot;localhost:9200&quot;]</div><div class="line"></div><div class="line">  # Optional protocol and basic auth credentials.</div><div class="line">  #protocol: &quot;https&quot;</div><div class="line">  #username: &quot;elastic&quot;</div><div class="line">  #password: &quot;changeme&quot;</div><div class="line"></div><div class="line">#----------------------------- Logstash output --------------------------------</div><div class="line">#</div><div class="line">fields_under_root: true</div><div class="line">fields:</div><div class="line">  from_machine: &quot;10.8.15.106 APP[5]&quot;</div><div class="line">output.logstash:</div><div class="line">  # The Logstash hosts</div><div class="line">  hosts: [&quot;10.8.26.121:5044&quot;]</div><div class="line"></div><div class="line">  # Optional SSL. By default is off.</div><div class="line">  # List of root certificates for HTTPS server verifications</div><div class="line">  #ssl.certificate_authorities: [&quot;/etc/pki/root/ca.pem&quot;]</div><div class="line"></div><div class="line">  # Certificate for SSL client authentication</div><div class="line">  #ssl.certificate: &quot;/etc/pki/client/cert.pem&quot;</div><div class="line"></div><div class="line">  # Client Certificate Key</div><div class="line">  #ssl.key: &quot;/etc/pki/client/cert.key&quot;</div><div class="line"></div><div class="line">#================================ Logging =====================================</div><div class="line"></div><div class="line"># Sets log level. The default log level is info.</div><div class="line"># Available log levels are: critical, error, warning, info, debug</div><div class="line">#logging.level: debug</div><div class="line"></div><div class="line"># At debug level, you can selectively enable logging only for some components.</div><div class="line"># To enable all selectors use [&quot;*&quot;]. Examples of other selectors are &quot;beat&quot;,</div><div class="line"># &quot;publish&quot;, &quot;service&quot;.</div><div class="line">#logging.selectors: [&quot;*&quot;]</div></pre></td></tr></table></figure></p>
-<p>###filebeat.yml (加密)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">###################### Filebeat Configuration Example #########################</div><div class="line"></div><div class="line"># This file is an example configuration file highlighting only the most common</div><div class="line"># options. The filebeat.full.yml file from the same directory contains all the</div><div class="line"># supported options with more comments. You can use it as a reference.</div><div class="line">#</div><div class="line"># You can find the full configuration reference here:</div><div class="line"># https://www.elastic.co/guide/en/beats/filebeat/index.html</div><div class="line"></div><div class="line">#=========================== Filebeat prospectors =============================</div><div class="line"></div><div class="line">filebeat.prospectors:</div><div class="line"></div><div class="line"># Each - is a prospector. Most options can be set at the prospector level, so</div><div class="line"># you can use different prospectors for various configurations.</div><div class="line"># Below are the prospector specific configurations.</div><div class="line"></div><div class="line">- input_type: log</div><div class="line"></div><div class="line">  # Paths that should be crawled and fetched. Glob based paths.</div><div class="line">  paths:</div><div class="line">    - /data/log/lang-xmpp/api.log</div><div class="line">    #- /var/log/*.log</div><div class="line">    #- c:\programdata\elasticsearch\logs\*</div><div class="line"></div><div class="line">  # Exclude lines. A list of regular expressions to match. It drops the lines that are</div><div class="line">  # matching any regular expression from the list.</div><div class="line">  #exclude_lines: [&quot;^DBG&quot;]</div><div class="line"></div><div class="line">  # Include lines. A list of regular expressions to match. It exports the lines that are</div><div class="line">  # matching any regular expression from the list.</div><div class="line">  #include_lines: [&quot;^ERR&quot;, &quot;^WARN&quot;]</div><div class="line"></div><div class="line">  # Exclude files. A list of regular expressions to match. Filebeat drops the files that</div><div class="line">  # are matching any regular expression from the list. By default, no files are dropped.</div><div class="line">  #exclude_files: [&quot;.gz$&quot;]</div><div class="line"></div><div class="line">  # Optional additional fields. These field can be freely picked</div><div class="line">  # to add additional information to the crawled log files for filtering</div><div class="line">  #fields:</div><div class="line">  #  level: debug</div><div class="line">  #  review: 1</div><div class="line"></div><div class="line">  ### Multiline options</div><div class="line"></div><div class="line">  # Mutiline can be used for log messages spanning multiple lines. This is common</div><div class="line">  # for Java Stack Traces or C-Line Continuation</div><div class="line"></div><div class="line">  # The regexp Pattern that has to be matched. The example pattern matches all lines starting with [</div><div class="line">  #multiline.pattern: ^\[</div><div class="line"></div><div class="line">  # Defines if the pattern set under pattern should be negated or not. Default is false.</div><div class="line">  #multiline.negate: false</div><div class="line"></div><div class="line">  # Match can be set to &quot;after&quot; or &quot;before&quot;. It is used to define if lines should be append to a pattern</div><div class="line">  # that was (not) matched before or after or as long as a pattern is not matched based on negate.</div><div class="line">  # Note: After is the equivalent to previous and before is the equivalent to to next in Logstash</div><div class="line">  #multiline.match: after</div><div class="line"></div><div class="line"></div><div class="line">#================================ General =====================================</div><div class="line">fields_under_root: true</div><div class="line">#fields:</div><div class="line">#  from_machine: &quot;10.8.17.112 APP[1]&quot;</div><div class="line"># The name of the shipper that publishes the network data. It can be used to group</div><div class="line"># all the transactions sent by a single shipper in the web interface.</div><div class="line">#name:</div><div class="line"></div><div class="line"># The tags of the shipper are included in their own field with each</div><div class="line"># transaction published.</div><div class="line">#tags: [&quot;service-X&quot;, &quot;web-tier&quot;]</div><div class="line"></div><div class="line"># Optional fields that you can specify to add additional information to the</div><div class="line"># output.</div><div class="line">#fields:</div><div class="line">#  env: staging</div><div class="line"></div><div class="line">#================================ Outputs =====================================</div><div class="line"></div><div class="line"># Configure what outputs to use when sending the data collected by the beat.</div><div class="line"># Multiple outputs may be used.</div><div class="line"></div><div class="line">#-------------------------- Elasticsearch output ------------------------------</div><div class="line">output.elasticsearch:</div><div class="line">  # Array of hosts to connect to.</div><div class="line">  hosts: [&quot;10.8.17.112:9200&quot;]</div><div class="line">  index: &quot;xmpp-%&#123;+yyyy.MM.dd&#125;&quot;</div><div class="line">  # Optional protocol and basic auth credentials.</div><div class="line">  #protocol: &quot;https&quot;</div><div class="line">  username: &quot;elastic&quot;</div><div class="line">  password: &quot;elasticpassword0314&quot;</div><div class="line"></div><div class="line">#----------------------------- Logstash output --------------------------------</div><div class="line">#output.logstash:</div><div class="line">#  hosts: [&quot;10.8.26.121:5044&quot;]</div><div class="line"></div><div class="line">  # Optional SSL. By default is off.</div><div class="line">  # List of root certificates for HTTPS server verifications</div><div class="line">  #ssl.certificate_authorities: [&quot;/etc/pki/root/ca.pem&quot;]</div><div class="line"></div><div class="line">  # Certificate for SSL client authentication</div><div class="line">  #ssl.certificate: &quot;/etc/pki/client/cert.pem&quot;</div><div class="line"></div><div class="line">  # Client Certificate Key</div><div class="line">  #ssl.key: &quot;/etc/pki/client/cert.key&quot;</div><div class="line"></div><div class="line">#================================ Logging =====================================</div><div class="line"></div><div class="line"># Sets log level. The default log level is info.</div><div class="line"># Available log levels are: critical, error, warning, info, debug</div><div class="line">#logging.level: debug</div><div class="line"></div><div class="line"># At debug level, you can selectively enable logging only for some components.</div><div class="line"># To enable all selectors use [&quot;*&quot;]. Examples of other selectors are &quot;beat&quot;,</div><div class="line"># &quot;publish&quot;, &quot;service&quot;.</div><div class="line">#logging.selectors: [&quot;*&quot;]</div><div class="line">~                                                                                                                                                                                                                                                                                                                                                                        </div><div class="line">~</div></pre></td></tr></table></figure>
-<p>###elasticsearch<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"># ======================== Elasticsearch Configuration =========================</div><div class="line">#</div><div class="line"># NOTE: Elasticsearch comes with reasonable defaults for most settings.</div><div class="line">#       Before you set out to tweak and tune the configuration, make sure you</div><div class="line">#       understand what are you trying to accomplish and the consequences.</div><div class="line">#</div><div class="line"># The primary way of configuring a node is via this file. This template lists</div><div class="line"># the most important settings you may want to configure for a production cluster.</div><div class="line">#</div><div class="line"># Please consult the documentation for further information on configuration options:</div><div class="line"># https://www.elastic.co/guide/en/elasticsearch/reference/index.html</div><div class="line">#</div><div class="line"># ---------------------------------- Cluster -----------------------------------</div><div class="line">#</div><div class="line"># Use a descriptive name for your cluster:</div><div class="line">#</div><div class="line">#cluster.name: my-application</div><div class="line">#</div><div class="line"># ------------------------------------ Node ------------------------------------</div><div class="line">#</div><div class="line"># Use a descriptive name for the node:</div><div class="line">#</div><div class="line">#node.name: node-1</div><div class="line">#</div><div class="line"># Add custom attributes to the node:</div><div class="line">#</div><div class="line">#node.attr.rack: r1</div><div class="line">#</div><div class="line"># ----------------------------------- Paths ------------------------------------</div><div class="line">#</div><div class="line"># Path to directory where to store the data (separate multiple locations by comma):</div><div class="line">#</div><div class="line">#path.data: /path/to/data</div><div class="line">#</div><div class="line"># Path to log files:</div><div class="line">#</div><div class="line">#path.logs: /path/to/logs</div><div class="line">#</div><div class="line"># ----------------------------------- Memory -----------------------------------</div><div class="line">#</div><div class="line"># Lock the memory on startup:</div><div class="line">#</div><div class="line">#bootstrap.memory_lock: true</div><div class="line">bootstrap.memory_lock: false</div><div class="line">bootstrap.system_call_filter: false</div><div class="line">#</div><div class="line"># Make sure that the heap size is set to about half the memory available</div><div class="line"># on the system and that the owner of the process is allowed to use this</div><div class="line"># limit.</div><div class="line">#</div><div class="line"># Elasticsearch performs poorly when the system is swapping the memory.</div><div class="line">#</div><div class="line"># ---------------------------------- Network -----------------------------------</div><div class="line">#</div><div class="line"># Set the bind address to a specific IP (IPv4 or IPv6):</div><div class="line">#</div><div class="line">network.host: 10.8.17.112</div><div class="line">#</div><div class="line"># Set a custom port for HTTP:</div><div class="line">#</div><div class="line">http.port: 9200</div><div class="line">#</div><div class="line"># For more information, consult the network module documentation.</div><div class="line">#</div><div class="line"># --------------------------------- Discovery ----------------------------------</div><div class="line">#</div><div class="line"># Pass an initial list of hosts to perform discovery when new node is started:</div><div class="line"># The default list of hosts is [&quot;127.0.0.1&quot;, &quot;[::1]&quot;]</div><div class="line">#</div><div class="line">#discovery.zen.ping.unicast.hosts: [&quot;host1&quot;, &quot;host2&quot;]</div><div class="line">#</div><div class="line"># Prevent the &quot;split brain&quot; by configuring the majority of nodes (total number of master-eligible nodes / 2 + 1):</div><div class="line">#</div><div class="line">#discovery.zen.minimum_master_nodes: 3</div><div class="line">#</div><div class="line"># For more information, consult the zen discovery module documentation.</div><div class="line">#</div><div class="line"># ---------------------------------- Gateway -----------------------------------</div><div class="line">#</div><div class="line"># Block initial recovery after a full cluster restart until N nodes are started:</div><div class="line">#</div><div class="line">#gateway.recover_after_nodes: 3</div><div class="line">#</div><div class="line"># For more information, consult the gateway module documentation.</div><div class="line">#</div><div class="line"># ---------------------------------- Various -----------------------------------</div><div class="line">#</div><div class="line"># Require explicit names when deleting indices:</div><div class="line">#</div><div class="line">#action.destructive_requires_name: true</div><div class="line"></div><div class="line">action.auto_create_index: .security,.monitoring*,.watches,.triggered_watches,.watcher-history*</div><div class="line"></div><div class="line">xpack.security.audit.enabled: true</div></pre></td></tr></table></figure></p>
-<p>###kibana.yml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Kibana is served by a back end server. This setting specifies the port to use.</div><div class="line">server.port: 5601</div><div class="line"></div><div class="line"># Specifies the address to which the Kibana server will bind. IP addresses and host names are both valid values.</div><div class="line"># The default is &apos;localhost&apos;, which usually means remote machines will not be able to connect.</div><div class="line"># To allow connections from remote users, set this parameter to a non-loopback address.</div><div class="line">server.host: &quot;localhost&quot;</div><div class="line"></div><div class="line"># Enables you to specify a path to mount Kibana at if you are running behind a proxy. This only affects</div><div class="line"># the URLs generated by Kibana, your proxy is expected to remove the basePath value before forwarding requests</div><div class="line"># to Kibana. This setting cannot end in a slash.</div><div class="line">#server.basePath: &quot;&quot;</div><div class="line"></div><div class="line"># The maximum payload size in bytes for incoming server requests.</div><div class="line">#server.maxPayloadBytes: 1048576</div><div class="line"></div><div class="line"># The Kibana server&apos;s name.  This is used for display purposes.</div><div class="line">#server.name: &quot;your-hostname&quot;</div><div class="line"></div><div class="line"># The URL of the Elasticsearch instance to use for all your queries.</div><div class="line">elasticsearch.url: &quot;http://10.8.17.112:9200&quot;</div><div class="line"></div><div class="line"># When this setting&apos;s value is true Kibana uses the hostname specified in the server.host</div><div class="line"># setting. When the value of this setting is false, Kibana uses the hostname of the host</div><div class="line"># that connects to this Kibana instance.</div><div class="line">#elasticsearch.preserveHost: true</div><div class="line"></div><div class="line"># Kibana uses an index in Elasticsearch to store saved searches, visualizations and</div><div class="line"># dashboards. Kibana creates a new index if the index doesn&apos;t already exist.</div><div class="line">kibana.index: &quot;.kibana&quot;</div><div class="line"></div><div class="line"># The default application to load.</div><div class="line">#kibana.defaultAppId: &quot;discover&quot;</div><div class="line"></div><div class="line"># If your Elasticsearch is protected with basic authentication, these settings provide</div><div class="line"># the username and password that the Kibana server uses to perform maintenance on the Kibana</div><div class="line"># index at startup. Your Kibana users still need to authenticate with Elasticsearch, which</div><div class="line"># is proxied through the Kibana server.</div><div class="line">elasticsearch.username: &quot;kibana&quot;</div><div class="line">elasticsearch.password: &quot;kibanapassword0314&quot;</div><div class="line"></div><div class="line"># Paths to the PEM-format SSL certificate and SSL key files, respectively. These</div><div class="line"># files enable SSL for outgoing requests from the Kibana server to the browser.</div><div class="line">#server.ssl.cert: /path/to/your/server.crt</div><div class="line">#server.ssl.key: /path/to/your/server.key</div><div class="line"></div><div class="line"># Optional settings that provide the paths to the PEM-format SSL certificate and key files.</div><div class="line"># These files validate that your Elasticsearch backend uses the same key files.</div><div class="line">#elasticsearch.ssl.cert: /path/to/your/client.crt</div><div class="line">#elasticsearch.ssl.key: /path/to/your/client.key</div><div class="line"></div><div class="line"># Optional setting that enables you to specify a path to the PEM file for the certificate</div><div class="line"># authority for your Elasticsearch instance.</div><div class="line">#elasticsearch.ssl.ca: /path/to/your/CA.pem</div><div class="line"></div><div class="line"># To disregard the validity of SSL certificates, change this setting&apos;s value to false.</div><div class="line">#elasticsearch.ssl.verify: true</div><div class="line"></div><div class="line"># Time in milliseconds to wait for Elasticsearch to respond to pings. Defaults to the value of</div><div class="line"># the elasticsearch.requestTimeout setting.</div><div class="line">#elasticsearch.pingTimeout: 1500</div><div class="line"></div><div class="line"># Time in milliseconds to wait for responses from the back end or Elasticsearch. This value</div><div class="line"># must be a positive integer.</div><div class="line">#elasticsearch.requestTimeout: 30000</div><div class="line"></div><div class="line"># List of Kibana client-side headers to send to Elasticsearch. To send *no* client-side</div><div class="line"># headers, set this value to [] (an empty list).</div><div class="line">#elasticsearch.requestHeadersWhitelist: [ authorization ]</div><div class="line"></div><div class="line"># Header names and values that are sent to Elasticsearch. Any custom headers cannot be overwritten</div><div class="line"># by client-side headers, regardless of the elasticsearch.requestHeadersWhitelist configuration.</div><div class="line">#elasticsearch.customHeaders: &#123;&#125;</div><div class="line"></div><div class="line"># Time in milliseconds for Elasticsearch to wait for responses from shards. Set to 0 to disable.</div><div class="line">#elasticsearch.shardTimeout: 0</div><div class="line"></div><div class="line"># Time in milliseconds to wait for Elasticsearch at Kibana startup before retrying.</div><div class="line">#elasticsearch.startupTimeout: 5000</div><div class="line"></div><div class="line"># Specifies the path where Kibana creates the process ID file.</div><div class="line">#pid.file: /var/run/kibana.pid</div><div class="line"></div><div class="line"># Enables you specify a file where Kibana stores log output.</div><div class="line">#logging.dest: stdout</div><div class="line"></div><div class="line"># Set the value of this setting to true to suppress all logging output.</div><div class="line">#logging.silent: false</div><div class="line"></div><div class="line"># Set the value of this setting to true to suppress all logging output other than error messages.</div><div class="line">#logging.quiet: false</div><div class="line"></div><div class="line"># Set the value of this setting to true to log all events, including system usage information</div><div class="line"># and all requests.</div><div class="line">#logging.verbose: false</div><div class="line"></div><div class="line"># Set the interval in milliseconds to sample system and process performance</div><div class="line"># metrics. Minimum is 100ms. Defaults to 5000.</div><div class="line">#ops.interval: 5000</div><div class="line">#</div><div class="line">xpack.security.enabled: true</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2032,7 +2039,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

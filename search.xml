@@ -54,19 +54,19 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[auth_basic]]></title>
-    <url>%2F2017%2F02%2F04%2Fnginx%2Fauth_basic%2F</url>
-    <content type="text"><![CDATA[#nginx auth_basic 配置 nginx .conf 文件1234567891011121314151617upstream kibana5 &#123; server localhost:5601 fail_timeout=5; keepalive 64;&#125;server &#123; listen 5602; server_name kibana_server.com; access_log /data/log/nginx/kibana.srv-log-dev.log; error_log /data/log/nginx/kibana.srv-log-dev.error.log; location / &#123; auth_basic &quot;secret&quot;; auth_basic_user_file /data/local/nginx/passwd.db; proxy_pass http://localhost:5601; &#125;&#125; 配置的选项auth_basic &quot;secret&quot;; auth_basic_user_file /data/local/nginx/passwd.db; auth文件/data/local/nginx/passwd.db 我使用的是nginx服务器：为了方便直接使用在线工具生成的，格式如下：user:passwd]]></content>
-      <tags>
-        <tag>basrc</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[linux]]></title>
     <url>%2F2017%2F02%2F04%2Fliunx%2Flinux%2F</url>
     <content type="text"><![CDATA[#linux[TOC] ##系统 信息 命令 内核/操作系统/CPU信息 uname 操作系统版本 head -n 1 /etc/issue 计算机名 hostname 列出加载的内核模块 lsmod 查看环境变量 env 查看系统 ps -p 1 ##资源 信息 命令 查看内存使用量和交换区使用量 free -g 查看系统运行时间、用户数、负载 uptime 端口zan yong lsof -i grep 5601 查看硬盘 du -sh * `` ##用户 信息 命令 描述 新增 adduser 会自动为创建的用户指定主目录、系统shell版本，会在创建时输入用户密码。 新增 useradd 需要使用参数选项指定上述基本设置，如果不使用任何参数，则创建的用户无密码、无主目录、没有指定shell版本 添加root vi /etc/sudoers.d/$user &amp;&amp; $user ALL=(ALL) ALL``chmod $user_file 400 修改密码 sudo passwd $suser 修改用户权限 sudo chown -R elasticsearch:elasticsearch /data/local/elasticsearch ##进程|信息|命令|描述|:||kill|ps -ef | grep xmpp.php | grep -v grep | awk &#39;{print $2}&#39; | xargs kill| ##文件 信息 命令 描述 软链 ln -s /data/local/mysql5.6.16/bin/mysql /uer/bin 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960系统 # uname -a # 查看内核/操作系统/CPU信息 # head -n 1 /etc/issue # 查看操作系统版本 # cat /proc/cpuinfo # 查看CPU信息 # hostname # 查看计算机名 # lspci -tv # 列出所有PCI设备 # lsusb -tv # 列出所有USB设备 # lsmod # 列出加载的内核模块 # env # 查看环境变量资源 # free -m # 查看内存使用量和交换区使用量 # df -h # 查看各分区使用情况 # du -sh &lt;目录名&gt; # 查看指定目录的大小 # grep MemTotal /proc/meminfo # 查看内存总量 # grep MemFree /proc/meminfo # 查看空闲内存量 # uptime # 查看系统运行时间、用户数、负载 # cat /proc/loadavg # 查看系统负载磁盘和分区 # mount | column -t # 查看挂接的分区状态 # fdisk -l # 查看所有分区 # swapon -s # 查看所有交换分区 # hdparm -i /dev/hda # 查看磁盘参数（仅适用于IDE设备） # dmesg | grep IDE # 查看启动时IDE设备检测状况网络 # ifconfig # 查看所有网络接口的属性 # iptables -L # 查看防火墙设置 # route -n # 查看路由表 # netstat -lntp # 查看所有监听端口 # netstat -antp # 查看所有已经建立的连接 # netstat -s # 查看网络统计信息进程 # ps -ef # 查看所有进程 # top # 实时显示进程状态用户 # w # 查看活动用户 # id &lt;用户名&gt; # 查看指定用户信息 # last # 查看用户登录日志 # cut -d: -f1 /etc/passwd # 查看系统所有用户 # cut -d: -f1 /etc/group # 查看系统所有组 # crontab -l # 查看当前用户的计划任务服务 # chkconfig --list # 列出所有系统服务 # chkconfig --list | grep on # 列出所有启动的系统服务程序 # rpm -qa # 查看所有安装的软件包]]></content>
       <tags>
         <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[auth_basic]]></title>
+    <url>%2F2017%2F02%2F04%2Fnginx%2Fauth_basic%2F</url>
+    <content type="text"><![CDATA[#nginx auth_basic 配置 nginx .conf 文件1234567891011121314151617upstream kibana5 &#123; server localhost:5601 fail_timeout=5; keepalive 64;&#125;server &#123; listen 5602; server_name kibana_server.com; access_log /data/log/nginx/kibana.srv-log-dev.log; error_log /data/log/nginx/kibana.srv-log-dev.error.log; location / &#123; auth_basic &quot;secret&quot;; auth_basic_user_file /data/local/nginx/passwd.db; proxy_pass http://localhost:5601; &#125;&#125; 配置的选项auth_basic &quot;secret&quot;; auth_basic_user_file /data/local/nginx/passwd.db; auth文件/data/local/nginx/passwd.db 我使用的是nginx服务器：为了方便直接使用在线工具生成的，格式如下：user:passwd]]></content>
+      <tags>
+        <tag>basrc</tag>
       </tags>
   </entry>
   <entry>

@@ -110,17 +110,17 @@
 
 
 
-<meta name="description" content="#phalcon log date format phalcon 日志日期格式重写 12345$loger = new File(&amp;apos;/data/logs/test.log&amp;apos;);$logDateFormat = new Line();$logDateFormat-&amp;gt;setDateFormat(&amp;apos;Y-m-d H:i:s&amp;apos;);$loger-&amp;gt;setFo">
+<meta name="description" content="#phalcon log date format ##phalcon 日志日期格式重写 12345$loger = new File(&amp;apos;/data/logs/test.log&amp;apos;);$logDateFormat = new Line();$logDateFormat-&amp;gt;setDateFormat(&amp;apos;Y-m-d H:i:s&amp;apos;);$loger-&amp;gt;set">
 <meta name="keywords" content="basrc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="phalcon log date format">
 <meta property="og:url" content="https://shihp.github.io/2018/01/01/php/phalcon-log-date-format/index.html">
 <meta property="og:site_name" content="五年">
-<meta property="og:description" content="#phalcon log date format phalcon 日志日期格式重写 12345$loger = new File(&amp;apos;/data/logs/test.log&amp;apos;);$logDateFormat = new Line();$logDateFormat-&amp;gt;setDateFormat(&amp;apos;Y-m-d H:i:s&amp;apos;);$loger-&amp;gt;setFo">
-<meta property="og:updated_time" content="2018-01-10T09:48:17.200Z">
+<meta property="og:description" content="#phalcon log date format ##phalcon 日志日期格式重写 12345$loger = new File(&amp;apos;/data/logs/test.log&amp;apos;);$logDateFormat = new Line();$logDateFormat-&amp;gt;setDateFormat(&amp;apos;Y-m-d H:i:s&amp;apos;);$loger-&amp;gt;set">
+<meta property="og:updated_time" content="2018-01-15T03:59:00.113Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="phalcon log date format">
-<meta name="twitter:description" content="#phalcon log date format phalcon 日志日期格式重写 12345$loger = new File(&amp;apos;/data/logs/test.log&amp;apos;);$logDateFormat = new Line();$logDateFormat-&amp;gt;setDateFormat(&amp;apos;Y-m-d H:i:s&amp;apos;);$loger-&amp;gt;setFo">
+<meta name="twitter:description" content="#phalcon log date format ##phalcon 日志日期格式重写 12345$loger = new File(&amp;apos;/data/logs/test.log&amp;apos;);$logDateFormat = new Line();$logDateFormat-&amp;gt;setDateFormat(&amp;apos;Y-m-d H:i:s&amp;apos;);$loger-&amp;gt;set">
 
 
 
@@ -414,8 +414,12 @@
 
       
         <p>#phalcon log date format</p>
-<p>phalcon 日志日期格式重写</p>
+<p>##phalcon 日志日期格式重写</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$loger = new File(&apos;/data/logs/test.log&apos;);</div><div class="line">$logDateFormat = new Line();</div><div class="line">$logDateFormat-&gt;setDateFormat(&apos;Y-m-d H:i:s&apos;);</div><div class="line">$loger-&gt;setFormatter($logDateFormat);</div><div class="line">$loger-&gt;alert(&apos;test &apos;.time());</div></pre></td></tr></table></figure>
+<p>##日志注册到服务中</p>
+<p>###设置 log handle</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">use Phalcon\Di;</div><div class="line"></div><div class="line">$di = new \Phalcon\DI\FactoryDefault();</div><div class="line">$di-&gt;setShared(&apos;loger&apos;, function () &#123;</div><div class="line">        $logRootPath = Di::getDefault()-&gt;get(&apos;config&apos;)-&gt;logger-&gt;log_root_path;</div><div class="line">        $date = \Common\Functions::date(1);</div><div class="line">        $filePath = $logRootPath . $date . DIRECTORY_SEPARATOR;</div><div class="line">        if (is_dir($filePath) === false) &#123;</div><div class="line">            mkdir($filePath, 0777, true);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        $loger = new File($filePath . &apos;/hello.log&apos;);</div><div class="line">        $logDateFormat = new Line();</div><div class="line">        $logDateFormat-&gt;setDateFormat(&apos;Y-m-d H:i:s&apos;);</div><div class="line">        $loger-&gt;setFormatter($logDateFormat);</div><div class="line">        Di::getDefault()-&gt;set(&apos;logerInstance&apos;, $loger);</div><div class="line">        return $loger;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 用户级别日志捕获</div><div class="line">     */</div><div class="line">    set_error_handler(function ($errno, $errInfo, $errFile, $errLine) &#123;</div><div class="line">        Di::getDefault()-&gt;get(&apos;loger&apos;)-&gt;info(sprintf(&apos;%s %s %s&apos;, $errFile, $errLine, $errInfo));</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">triggen_error( &apos;test&apos;.time() );</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -569,8 +573,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars0.githubusercontent.com/u/12179178?v=3&u=0c0d21c59b924f1bd9063d456652768791dacde3&s=400"
@@ -630,6 +643,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#调用"><span class="nav-number">1.</span> <span class="nav-text">调用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

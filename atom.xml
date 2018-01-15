@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shihp.github.io/"/>
-  <updated>2018-01-10T09:48:17.200Z</updated>
+  <updated>2018-01-15T03:59:00.113Z</updated>
   <id>https://shihp.github.io/</id>
   
   <author>
@@ -20,18 +20,22 @@
     <link href="https://shihp.github.io/2018/01/01/php/phalcon-log-date-format/"/>
     <id>https://shihp.github.io/2018/01/01/php/phalcon-log-date-format/</id>
     <published>2018-01-01T10:20:44.000Z</published>
-    <updated>2018-01-10T09:48:17.200Z</updated>
+    <updated>2018-01-15T03:59:00.113Z</updated>
     
     <content type="html"><![CDATA[<p>#phalcon log date format</p>
-<p>phalcon 日志日期格式重写</p>
+<p>##phalcon 日志日期格式重写</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$loger = new File(&apos;/data/logs/test.log&apos;);</div><div class="line">$logDateFormat = new Line();</div><div class="line">$logDateFormat-&gt;setDateFormat(&apos;Y-m-d H:i:s&apos;);</div><div class="line">$loger-&gt;setFormatter($logDateFormat);</div><div class="line">$loger-&gt;alert(&apos;test &apos;.time());</div></pre></td></tr></table></figure>
+<p>##日志注册到服务中</p>
+<p>###设置 log handle</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">use Phalcon\Di;</div><div class="line"></div><div class="line">$di = new \Phalcon\DI\FactoryDefault();</div><div class="line">$di-&gt;setShared(&apos;loger&apos;, function () &#123;</div><div class="line">        $logRootPath = Di::getDefault()-&gt;get(&apos;config&apos;)-&gt;logger-&gt;log_root_path;</div><div class="line">        $date = \Common\Functions::date(1);</div><div class="line">        $filePath = $logRootPath . $date . DIRECTORY_SEPARATOR;</div><div class="line">        if (is_dir($filePath) === false) &#123;</div><div class="line">            mkdir($filePath, 0777, true);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        $loger = new File($filePath . &apos;/hello.log&apos;);</div><div class="line">        $logDateFormat = new Line();</div><div class="line">        $logDateFormat-&gt;setDateFormat(&apos;Y-m-d H:i:s&apos;);</div><div class="line">        $loger-&gt;setFormatter($logDateFormat);</div><div class="line">        Di::getDefault()-&gt;set(&apos;logerInstance&apos;, $loger);</div><div class="line">        return $loger;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 用户级别日志捕获</div><div class="line">     */</div><div class="line">    set_error_handler(function ($errno, $errInfo, $errFile, $errLine) &#123;</div><div class="line">        Di::getDefault()-&gt;get(&apos;loger&apos;)-&gt;info(sprintf(&apos;%s %s %s&apos;, $errFile, $errLine, $errInfo));</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">triggen_error( &apos;test&apos;.time() );</div></pre></td></tr></table></figure>
 ]]></content>
     
     <summary type="html">
     
       &lt;p&gt;#phalcon log date format&lt;/p&gt;
-&lt;p&gt;phalcon 日志日期格式重写&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;
+&lt;p&gt;##phalcon 日志日期格式重写&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;lin
     
     </summary>
     
@@ -351,30 +355,6 @@
   </entry>
   
   <entry>
-    <title>mac vim 设置</title>
-    <link href="https://shihp.github.io/2017/03/21/liunx/vim/"/>
-    <id>https://shihp.github.io/2017/03/21/liunx/vim/</id>
-    <published>2017-03-21T10:20:44.000Z</published>
-    <updated>2017-05-12T09:52:13.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>#mac vim 设置</p>
-<p><code>vi ~/.vimrc</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">set ai                  &quot; auto indenting</div><div class="line">set history=100         &quot; keep 100 lines of history</div><div class="line">set ruler               &quot; show the cursor position</div><div class="line">syntax on               &quot; syntax highlighting</div><div class="line">set hlsearch            &quot; highlight the last searched term</div><div class="line">filetype plugin on      &quot; use the file type plugins</div><div class="line"></div><div class="line">&quot; When editing a file, always jump to the last cursor position</div><div class="line">autocmd BufReadPost *</div><div class="line">\ if ! exists(&quot;g:leave_my_cursor_position_alone&quot;) |</div><div class="line">\ if line(&quot;&apos;\&quot;&quot;) &gt; 0 &amp;&amp; line (&quot;&apos;\&quot;&quot;) &lt;= line(&quot;$&quot;) |</div><div class="line">\ exe &quot;normal g&apos;\&quot;&quot; |</div><div class="line">\ endif |</div><div class="line">\ endif</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;#mac vim 设置&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;vi ~/.vimrc&lt;/code&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/d
-    
-    </summary>
-    
-    
-      <category term="vim" scheme="https://shihp.github.io/tags/vim/"/>
-    
-  </entry>
-  
-  <entry>
     <title>vagrant 虚拟机工具</title>
     <link href="https://shihp.github.io/2017/03/21/liunx/vagrant/"/>
     <id>https://shihp.github.io/2017/03/21/liunx/vagrant/</id>
@@ -400,6 +380,30 @@
     
     
       <category term="linux 虚拟机" scheme="https://shihp.github.io/tags/linux-%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mac vim 设置</title>
+    <link href="https://shihp.github.io/2017/03/21/liunx/vim/"/>
+    <id>https://shihp.github.io/2017/03/21/liunx/vim/</id>
+    <published>2017-03-21T10:20:44.000Z</published>
+    <updated>2017-05-12T09:52:13.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>#mac vim 设置</p>
+<p><code>vi ~/.vimrc</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">set ai                  &quot; auto indenting</div><div class="line">set history=100         &quot; keep 100 lines of history</div><div class="line">set ruler               &quot; show the cursor position</div><div class="line">syntax on               &quot; syntax highlighting</div><div class="line">set hlsearch            &quot; highlight the last searched term</div><div class="line">filetype plugin on      &quot; use the file type plugins</div><div class="line"></div><div class="line">&quot; When editing a file, always jump to the last cursor position</div><div class="line">autocmd BufReadPost *</div><div class="line">\ if ! exists(&quot;g:leave_my_cursor_position_alone&quot;) |</div><div class="line">\ if line(&quot;&apos;\&quot;&quot;) &gt; 0 &amp;&amp; line (&quot;&apos;\&quot;&quot;) &lt;= line(&quot;$&quot;) |</div><div class="line">\ exe &quot;normal g&apos;\&quot;&quot; |</div><div class="line">\ endif |</div><div class="line">\ endif</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#mac vim 设置&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;vi ~/.vimrc&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/d
+    
+    </summary>
+    
+    
+      <category term="vim" scheme="https://shihp.github.io/tags/vim/"/>
     
   </entry>
   
@@ -463,33 +467,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>auth_basic</title>
-    <link href="https://shihp.github.io/2017/02/04/nginx/auth_basic/"/>
-    <id>https://shihp.github.io/2017/02/04/nginx/auth_basic/</id>
-    <published>2017-02-04T10:20:44.000Z</published>
-    <updated>2017-05-12T09:52:57.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>#nginx auth_basic 配置</p>
-<p>nginx .conf 文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">upstream kibana5 &#123;</div><div class="line">    server localhost:5601 fail_timeout=5;</div><div class="line">    keepalive 64;</div><div class="line">&#125;</div><div class="line">server &#123;</div><div class="line">    listen               5602;</div><div class="line">    server_name          kibana_server.com;</div><div class="line">    access_log           /data/log/nginx/kibana.srv-log-dev.log;</div><div class="line">    error_log            /data/log/nginx/kibana.srv-log-dev.error.log;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">         auth_basic &quot;secret&quot;;</div><div class="line">         auth_basic_user_file /data/local/nginx/passwd.db;</div><div class="line">         proxy_pass           http://localhost:5601;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><em>配置的选项</em><br><code>auth_basic &quot;secret&quot;;
- auth_basic_user_file /data/local/nginx/passwd.db;</code></p>
-<p><em>auth文件</em><br>/data/local/nginx/passwd.db</p>
-<p>我使用的是nginx服务器：为了方便直接使用在线工具生成的，格式如下：<br>user:passwd</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;#nginx auth_basic 配置&lt;/p&gt;
-&lt;p&gt;nginx .conf 文件&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div
-    
-    </summary>
-    
-    
-      <category term="basrc" scheme="https://shihp.github.io/tags/basrc/"/>
     
   </entry>
   
@@ -633,6 +610,33 @@
     
     
       <category term="linux" scheme="https://shihp.github.io/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>auth_basic</title>
+    <link href="https://shihp.github.io/2017/02/04/nginx/auth_basic/"/>
+    <id>https://shihp.github.io/2017/02/04/nginx/auth_basic/</id>
+    <published>2017-02-04T10:20:44.000Z</published>
+    <updated>2017-05-12T09:52:57.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>#nginx auth_basic 配置</p>
+<p>nginx .conf 文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">upstream kibana5 &#123;</div><div class="line">    server localhost:5601 fail_timeout=5;</div><div class="line">    keepalive 64;</div><div class="line">&#125;</div><div class="line">server &#123;</div><div class="line">    listen               5602;</div><div class="line">    server_name          kibana_server.com;</div><div class="line">    access_log           /data/log/nginx/kibana.srv-log-dev.log;</div><div class="line">    error_log            /data/log/nginx/kibana.srv-log-dev.error.log;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">         auth_basic &quot;secret&quot;;</div><div class="line">         auth_basic_user_file /data/local/nginx/passwd.db;</div><div class="line">         proxy_pass           http://localhost:5601;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><em>配置的选项</em><br><code>auth_basic &quot;secret&quot;;
+ auth_basic_user_file /data/local/nginx/passwd.db;</code></p>
+<p><em>auth文件</em><br>/data/local/nginx/passwd.db</p>
+<p>我使用的是nginx服务器：为了方便直接使用在线工具生成的，格式如下：<br>user:passwd</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#nginx auth_basic 配置&lt;/p&gt;
+&lt;p&gt;nginx .conf 文件&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div
+    
+    </summary>
+    
+    
+      <category term="basrc" scheme="https://shihp.github.io/tags/basrc/"/>
     
   </entry>
   

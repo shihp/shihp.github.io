@@ -110,17 +110,17 @@
 
 
 
-<meta name="description" content="#shell 实现php 脚本动态扩展 shell 通过 服务器可容纳的task数,以及总的需要执行的任务数 动态分配服务脚本">
+<meta name="description" content="shell 实现php 脚本动态扩展shell 通过 服务器可容纳的task数,以及总的需要执行的任务数 动态分配服务脚本">
 <meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shell 实现php 脚本动态扩展">
 <meta property="og:url" content="https://shihp.github.io/2018/02/09/liunx/php/index.html">
 <meta property="og:site_name" content="五年">
-<meta property="og:description" content="#shell 实现php 脚本动态扩展 shell 通过 服务器可容纳的task数,以及总的需要执行的任务数 动态分配服务脚本">
-<meta property="og:updated_time" content="2018-02-09T09:25:18.988Z">
+<meta property="og:description" content="shell 实现php 脚本动态扩展shell 通过 服务器可容纳的task数,以及总的需要执行的任务数 动态分配服务脚本">
+<meta property="og:updated_time" content="2018-02-09T09:27:36.448Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 实现php 脚本动态扩展">
-<meta name="twitter:description" content="#shell 实现php 脚本动态扩展 shell 通过 服务器可容纳的task数,以及总的需要执行的任务数 动态分配服务脚本">
+<meta name="twitter:description" content="shell 实现php 脚本动态扩展shell 通过 服务器可容纳的task数,以及总的需要执行的任务数 动态分配服务脚本">
 
 
 
@@ -413,8 +413,7 @@
       
 
       
-        <p>#shell 实现php 脚本动态扩展</p>
-<p>shell 通过 服务器可容纳的task数,以及总的需要执行的任务数 动态分配服务脚本<br><a id="more"></a></p>
+        <h1 id="shell-实现php-脚本动态扩展"><a href="#shell-实现php-脚本动态扩展" class="headerlink" title="shell 实现php 脚本动态扩展"></a>shell 实现php 脚本动态扩展</h1><p>shell 通过 服务器可容纳的task数,以及总的需要执行的任务数 动态分配服务脚本<br><a id="more"></a></p>
 <p>usage <code>sh test.sh 100 1500000</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line"># shell 通过 服务器可容纳的task数,以及总的需要执行的任务数 动态分配服务脚本</div><div class="line"></div><div class="line"># task 参数 1: 后台启动的 task 数量</div><div class="line"># user_count 参数 2: 需要处理的总的任务量</div><div class="line"></div><div class="line">int=1</div><div class="line"></div><div class="line">task=$1</div><div class="line">user_count=$2</div><div class="line"></div><div class="line">task_deal_user=`expr $&#123;user_count&#125; / $&#123;task&#125;`</div><div class="line">do_task_deal_user=`expr $&#123;task_deal_user&#125; + 1`</div><div class="line"></div><div class="line">while(( $int&lt;=$&#123;task&#125; ))</div><div class="line">do</div><div class="line">    start=`expr $&#123;int&#125; - 1`</div><div class="line">    start2=`expr $&#123;start&#125;  \* $&#123;do_task_deal_user&#125;`</div><div class="line">    end=`expr $&#123;int&#125; \* $&#123;do_task_deal_user&#125;`</div><div class="line">    echo &quot;$&#123;start2&#125; *** $&#123;start2&#125;&quot;</div><div class="line">#    nohup php /data/project/vip/task/cli.php task main $&#123;start2&#125;,$&#123;end&#125; &quot;&gt;&quot; 100 &amp;&gt;/dev/null &amp;</div><div class="line">    str=&quot;nohup php /data/project/vip/task/cli.php task main $start2,$end &gt; 100 &amp;&gt;/dev/null &amp;&quot;</div><div class="line">    echo $&#123;str&#125;</div><div class="line">    let &quot;int++&quot;</div><div class="line">    sleep 1</div><div class="line">done</div></pre></td></tr></table></figure>
       
@@ -546,8 +545,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars0.githubusercontent.com/u/12179178?v=3&u=0c0d21c59b924f1bd9063d456652768791dacde3&s=400"
@@ -607,6 +615,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#shell-实现php-脚本动态扩展"><span class="nav-number">1.</span> <span class="nav-text">shell 实现php 脚本动态扩展</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

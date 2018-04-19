@@ -92,7 +92,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="go beego," />
 
 
 
@@ -110,15 +110,17 @@
 
 
 
-<meta name="description" content="一身转战三千里 一剑曾当百万师">
-<meta property="og:type" content="website">
-<meta property="og:title" content="五年">
-<meta property="og:url" content="https://shihp.github.io/archives/2018/01/index.html">
+<meta name="description" content="beego 部署方案  因为在使用 beego 的时候,看官方文档,有些地方文档写的不够清楚,自己尝试了部署了下,然后将结果分享给大家,作为官方文档的辅助">
+<meta name="keywords" content="go beego">
+<meta property="og:type" content="article">
+<meta property="og:title" content="beego 部署方案">
+<meta property="og:url" content="https://shihp.github.io/2018/04/18/go/beego 应用部署/index.html">
 <meta property="og:site_name" content="五年">
-<meta property="og:description" content="一身转战三千里 一剑曾当百万师">
+<meta property="og:description" content="beego 部署方案  因为在使用 beego 的时候,看官方文档,有些地方文档写的不够清楚,自己尝试了部署了下,然后将结果分享给大家,作为官方文档的辅助">
+<meta property="og:updated_time" content="2018-04-19T02:20:25.805Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="五年">
-<meta name="twitter:description" content="一身转战三千里 一剑曾当百万师">
+<meta name="twitter:title" content="beego 部署方案">
+<meta name="twitter:description" content="beego 部署方案  因为在使用 beego 的时候,看官方文档,有些地方文档写的不够清楚,自己尝试了部署了下,然后将结果分享给大家,作为官方文档的辅助">
 
 
 
@@ -146,13 +148,13 @@
 
 
 
-  <link rel="canonical" href="https://shihp.github.io/archives/2018/01/"/>
+  <link rel="canonical" href="https://shihp.github.io/2018/04/18/go/beego 应用部署/"/>
 
 
 
 
 
-  <title>归档 | 五年</title>
+  <title>beego 部署方案 | 五年</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -187,7 +189,7 @@
     
   
 
-  <div class="container sidebar-position-left  page-archive  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -315,66 +317,210 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 19 篇日志。 继续努力。
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://shihp.github.io/2018/04/18/go/beego 应用部署/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="walter">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/12179178?v=3&u=0c0d21c59b924f1bd9063d456652768791dacde3&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="五年">
     </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">beego 部署方案</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-18T20:20:44+08:00">
+                2018-04-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/04/18/go/beego 应用部署/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/04/18/go/beego 应用部署/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/04/18/go/beego 应用部署/" class="leancloud_visitors" data-flag-title="beego 部署方案">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
 
       
       
-      
 
+      
+        <h1 id="beego-部署方案"><a href="#beego-部署方案" class="headerlink" title="beego 部署方案"></a>beego 部署方案</h1><hr>
+<blockquote>
+<p>因为在使用 beego 的时候,看官方文档,有些地方文档写的不够清楚,自己尝试了部署了下,然后将结果分享给大家,作为官方文档的辅助</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="前置工作"><a href="#前置工作" class="headerlink" title="前置工作"></a>前置工作</h2><ol>
+<li>需要一个可以编译成功的 go 应用(简单点的话 可以直接 bee api {beeapi} 生成一份 api 的项目)</li>
+<li>编译 <code>go build</code></li>
+</ol>
+<h2 id="配置部署目录"><a href="#配置部署目录" class="headerlink" title="配置部署目录"></a>配置部署目录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mkdir /data/project/release/beego-hello</div><div class="line">cp beeapi /data/project/release/beego-hello/</div><div class="line">cp -fr conf /opt/app/beepkg</div><div class="line"></div><div class="line">//api 项目没有这两个文件夹,忽略即可</div><div class="line">cp -fr views /opt/app/beepkg</div><div class="line">cp -fr static /opt/app/beepkg</div></pre></td></tr></table></figure>
+<h2 id="独立部署模式-将-go-应用启动"><a href="#独立部署模式-将-go-应用启动" class="headerlink" title="独立部署模式,将 go 应用启动"></a>独立部署模式,将 go 应用启动</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nohup  ./beeapi  &amp;&gt;&gt; beeapi.log &amp;</div></pre></td></tr></table></figure>
+<h2 id="配置-nginx"><a href="#配置-nginx" class="headerlink" title="配置 nginx"></a>配置 nginx</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen       80;</div><div class="line">    server_name  beego.com;</div><div class="line"></div><div class="line">    charset utf-8;</div><div class="line">    access_log  /data/project/release/beego-hello/beego.com.access.log;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">        try_files /_not_exists_ @backend;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    location @backend &#123;</div><div class="line">        proxy_set_header X-Forwarded-For $remote_addr;</div><div class="line">        proxy_set_header Host            $http_host;</div><div class="line"></div><div class="line">        proxy_pass http://127.0.0.1:8080;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">server &#123;</div><div class="line">    listen       80;</div><div class="line">    server_name  beego-admin.com;</div><div class="line"></div><div class="line">    charset utf-8;</div><div class="line">    access_log  /data/project/release/beego-hello/beego-admin.com.access.log;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">        try_files /_not_exists_ @backend;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    location @backend &#123;</div><div class="line">        proxy_set_header X-Forwarded-For $remote_addr;</div><div class="line">        proxy_set_header Host            $http_host;</div><div class="line"></div><div class="line">        proxy_pass http://127.0.0.1:8088;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><h3 id="配置域名映射"><a href="#配置域名映射" class="headerlink" title="配置域名映射"></a>配置域名映射</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">127.0.0.1 beego.com</div></pre></td></tr></table></figure>
+<h3 id="压测"><a href="#压测" class="headerlink" title="压测"></a>压测</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ab -n100000 -c200 http://beego.com/v1/object</div></pre></td></tr></table></figure>
+<p><code>go 原生应用压测时候,,平均在120~170us 左右,没有 dump 过</code><br><code>nginx,平均30~50us, 但是会 dump, 不稳定</code></p>
+
+      
+    </div>
+
+    <div>
       
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2018">2018</h2>
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="https://upload.cc/i/KmHLVw.jpeg" alt="walter wechat" style="width: 200px; max-width: 100%;"/>
+    <div>公众号</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="https://upload.cc/i/vlEVqM.jpeg" alt="walter WeChat Pay"/>
+          <p>微信打赏</p>
         </div>
       
       
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="https://upload.cc/i/cThzlq.jpeg" alt="walter Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
 
       
+    </div>
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
+    <div>
+      
         
-            <a class="post-title-link" href="/2018/01/01/php/phalcon-log-date-format/" itemprop="url">
-              
-                <span itemprop="name">phalcon log date format</span>
-              
-            </a>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/go-beego/" rel="tag"># go beego</a>
+          
+        </div>
+      
+
+      
         
-      </h2>
+      
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-01T18:20:44+08:00"
-              content="2018-01-01" >
-          01-01
-        </time>
-      </div>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/02/efficient/privoxy over the wall in terminal/" rel="next" title="shadowsocks 下 在 终端 使用 privoxy Over the wall">
+                <i class="fa fa-chevron-left"></i> shadowsocks 下 在 终端 使用 privoxy Over the wall
+              </a>
+            
+          </div>
 
-    </header>
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
 
-    
-
-  </section>
-
-  
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -382,6 +528,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -401,8 +558,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars0.githubusercontent.com/u/12179178?v=3&u=0c0d21c59b924f1bd9063d456652768791dacde3&s=400"
@@ -462,6 +628,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#beego-部署方案"><span class="nav-number">1.</span> <span class="nav-text">beego 部署方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前置工作"><span class="nav-number">1.1.</span> <span class="nav-text">前置工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置部署目录"><span class="nav-number">1.2.</span> <span class="nav-text">配置部署目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#独立部署模式-将-go-应用启动"><span class="nav-number">1.3.</span> <span class="nav-text">独立部署模式,将 go 应用启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-nginx"><span class="nav-number">1.4.</span> <span class="nav-text">配置 nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证"><span class="nav-number">1.5.</span> <span class="nav-text">验证</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置域名映射"><span class="nav-number">1.5.1.</span> <span class="nav-text">配置域名映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#压测"><span class="nav-number">1.5.2.</span> <span class="nav-text">压测</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -577,11 +759,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
 
 
   
@@ -600,6 +780,18 @@
       <script id="dsq-count-scr" src="https://https-shihp-github-io.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://shihp.github.io/2018/04/18/go/beego 应用部署/';
+          this.page.identifier = '2018/04/18/go/beego 应用部署/';
+          this.page.title = 'beego 部署方案';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-shihp-github-io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   

@@ -92,7 +92,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="go beego," />
+  <meta name="keywords" content="go," />
 
 
 
@@ -110,17 +110,17 @@
 
 
 
-<meta name="description" content="beego 部署方案  因为在使用 beego 的时候,看官方文档,有些地方文档写的不够清楚,自己尝试了部署了下,然后将结果分享给大家,作为官方文档的辅助">
-<meta name="keywords" content="go beego">
+<meta name="description" content="因为在使用 beego 的时候,看官方文档,有些地方文档写的不够清楚,自己尝试了部署了下,然后将结果分享给大家,作为官方文档的辅助">
+<meta name="keywords" content="go">
 <meta property="og:type" content="article">
 <meta property="og:title" content="beego 部署方案">
 <meta property="og:url" content="https://shihp.github.io/2018/04/18/go/beego 应用部署/index.html">
 <meta property="og:site_name" content="五年">
-<meta property="og:description" content="beego 部署方案  因为在使用 beego 的时候,看官方文档,有些地方文档写的不够清楚,自己尝试了部署了下,然后将结果分享给大家,作为官方文档的辅助">
-<meta property="og:updated_time" content="2018-04-19T02:20:25.805Z">
+<meta property="og:description" content="因为在使用 beego 的时候,看官方文档,有些地方文档写的不够清楚,自己尝试了部署了下,然后将结果分享给大家,作为官方文档的辅助">
+<meta property="og:updated_time" content="2018-04-28T03:31:17.435Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="beego 部署方案">
-<meta name="twitter:description" content="beego 部署方案  因为在使用 beego 的时候,看官方文档,有些地方文档写的不够清楚,自己尝试了部署了下,然后将结果分享给大家,作为官方文档的辅助">
+<meta name="twitter:description" content="因为在使用 beego 的时候,看官方文档,有些地方文档写的不够清楚,自己尝试了部署了下,然后将结果分享给大家,作为官方文档的辅助">
 
 
 
@@ -413,7 +413,7 @@
       
 
       
-        <h1 id="beego-部署方案"><a href="#beego-部署方案" class="headerlink" title="beego 部署方案"></a>beego 部署方案</h1><hr>
+        <hr>
 <blockquote>
 <p>因为在使用 beego 的时候,看官方文档,有些地方文档写的不够清楚,自己尝试了部署了下,然后将结果分享给大家,作为官方文档的辅助</p>
 </blockquote>
@@ -483,7 +483,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/go-beego/" rel="tag"># go beego</a>
+            <a href="/tags/go/" rel="tag"># go</a>
           
         </div>
       
@@ -505,6 +505,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/25/go/go 微服务实践 consul/" rel="prev" title="go 微服务实践 consul">
+                go 微服务实践 consul <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -583,7 +587,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -638,7 +642,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#beego-部署方案"><span class="nav-number">1.</span> <span class="nav-text">beego 部署方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前置工作"><span class="nav-number">1.1.</span> <span class="nav-text">前置工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置部署目录"><span class="nav-number">1.2.</span> <span class="nav-text">配置部署目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#独立部署模式-将-go-应用启动"><span class="nav-number">1.3.</span> <span class="nav-text">独立部署模式,将 go 应用启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-nginx"><span class="nav-number">1.4.</span> <span class="nav-text">配置 nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证"><span class="nav-number">1.5.</span> <span class="nav-text">验证</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置域名映射"><span class="nav-number">1.5.1.</span> <span class="nav-text">配置域名映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#压测"><span class="nav-number">1.5.2.</span> <span class="nav-text">压测</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前置工作"><span class="nav-number">1.</span> <span class="nav-text">前置工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置部署目录"><span class="nav-number">2.</span> <span class="nav-text">配置部署目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#独立部署模式-将-go-应用启动"><span class="nav-number">3.</span> <span class="nav-text">独立部署模式,将 go 应用启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-nginx"><span class="nav-number">4.</span> <span class="nav-text">配置 nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证"><span class="nav-number">5.</span> <span class="nav-text">验证</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置域名映射"><span class="nav-number">5.1.</span> <span class="nav-text">配置域名映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#压测"><span class="nav-number">5.2.</span> <span class="nav-text">压测</span></a></li></ol></li></ol></div>
             
 
           </div>

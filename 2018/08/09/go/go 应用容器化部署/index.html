@@ -92,7 +92,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="go," />
 
 
 
@@ -110,15 +110,17 @@
 
 
 
-<meta name="description" content="一身转战三千里 一剑曾当百万师">
-<meta property="og:type" content="website">
-<meta property="og:title" content="五年">
-<meta property="og:url" content="https://shihp.github.io/archives/index.html">
+<meta name="description" content="go微服务实践(docker swarm 版本…)">
+<meta name="keywords" content="go">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go 微服务实践(docker swarm)">
+<meta property="og:url" content="https://shihp.github.io/2018/08/09/go/go 应用容器化部署/index.html">
 <meta property="og:site_name" content="五年">
-<meta property="og:description" content="一身转战三千里 一剑曾当百万师">
+<meta property="og:description" content="go微服务实践(docker swarm 版本…)">
+<meta property="og:updated_time" content="2018-08-09T08:52:29.535Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="五年">
-<meta name="twitter:description" content="一身转战三千里 一剑曾当百万师">
+<meta name="twitter:title" content="go 微服务实践(docker swarm)">
+<meta name="twitter:description" content="go微服务实践(docker swarm 版本…)">
 
 
 
@@ -146,13 +148,13 @@
 
 
 
-  <link rel="canonical" href="https://shihp.github.io/archives/"/>
+  <link rel="canonical" href="https://shihp.github.io/2018/08/09/go/go 应用容器化部署/"/>
 
 
 
 
 
-  <title>归档 | 五年</title>
+  <title>go 微服务实践(docker swarm) | 五年</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -187,7 +189,7 @@
     
   
 
-  <div class="container sidebar-position-left  page-archive  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -315,403 +317,225 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 25 篇日志。 继续努力。
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://shihp.github.io/2018/08/09/go/go 应用容器化部署/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="walter">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/12179178?v=3&u=0c0d21c59b924f1bd9063d456652768791dacde3&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="五年">
     </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">go 微服务实践(docker swarm)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T20:20:44+08:00">
+                2018-08-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/09/go/go 应用容器化部署/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/08/09/go/go 应用容器化部署/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/08/09/go/go 应用容器化部署/" class="leancloud_visitors" data-flag-title="go 微服务实践(docker swarm)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
 
       
       
-      
 
+      
+        <hr>
+<blockquote>
+<p>go微服务实践(docker swarm 版本…)</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="go-微服务实践-docker-swarm"><a href="#go-微服务实践-docker-swarm" class="headerlink" title="go 微服务实践(docker swarm)"></a>go 微服务实践(docker swarm)</h1><hr>
+<p>[toc]</p>
+<h2 id="编写-web-服务"><a href="#编写-web-服务" class="headerlink" title="编写 web 服务"></a>编写 web 服务</h2><h2 id="docker-化-http-服务"><a href="#docker-化-http-服务" class="headerlink" title="docker 化 http 服务"></a>docker 化 http 服务</h2><p>编译服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">export GOOS=linux</div><div class="line">go build -o accountservice-linux-amd64</div><div class="line">export GOOS=darwin</div></pre></td></tr></table></figure></p>
+<p>docker file<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#docke file 文件</div><div class="line">FROM iron/base</div><div class="line"></div><div class="line">EXPOSE 6767</div><div class="line">ADD accountservice-linux-amd64 /</div><div class="line">ENTRYPOINT [&quot;./accountservice-linux-amd64&quot;]</div></pre></td></tr></table></figure></p>
+<p>build 镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">build -t  shihp/accountservice micro-account-service/</div></pre></td></tr></table></figure></p>
+<p>启动镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">docker container run --rm -p 8000:6767 -it shihp/micro-account-service</div><div class="line"></div><div class="line">http://127.0.0.1:8000/accounts/10000</div></pre></td></tr></table></figure></p>
+<h2 id="docker-swarm-环境"><a href="#docker-swarm-环境" class="headerlink" title="docker swarm 环境"></a>docker swarm 环境</h2><h3 id="创建-machine"><a href="#创建-machine" class="headerlink" title="创建 machine"></a>创建 machine</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker-machine create go-micro</div></pre></td></tr></table></figure>
+<h4 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">boot2docker</div><div class="line">#下载地址</div><div class="line">https://github.com/boot2docker/boot2docker/releases/download/v18.05.0-ce/boot2docker.iso</div><div class="line">#本机位置</div><div class="line">mv boot2docker.iso /Users/shihuipeng/.docker/machine/cache/</div></pre></td></tr></table></figure>
+<h3 id="docker-machine-swarm-init"><a href="#docker-machine-swarm-init" class="headerlink" title="docker-machine swarm init"></a>docker-machine swarm init</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">docker $(docker-machine config go-micro) swarm init --advertise-addr $(docker-machine ip go-micro)</div><div class="line"></div><div class="line">#    docker swarm join --token SWMTKN-1-36hq2nob9yu6ftovlb5xso6u27zh73m8u7nr1cfcefeja1fsov-c6edidql4h1x5uwgn0lq8zzvq 192.168.99.100:2377</div><div class="line"></div><div class="line"># docker swarm join-token manager</div></pre></td></tr></table></figure>
+<h3 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eval $(docker-machine env swarm-manager-1)</div></pre></td></tr></table></figure>
+<h3 id="创建网络"><a href="#创建网络" class="headerlink" title="创建网络"></a>创建网络</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker network create --driver overlay micro_network</div></pre></td></tr></table></figure>
+<h3 id="运行-rabbitmq-服务"><a href="#运行-rabbitmq-服务" class="headerlink" title="运行 rabbitmq 服务"></a>运行 rabbitmq 服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./rabbitmqshell</div></pre></td></tr></table></figure>
+<h3 id="运行-spring-could-服务"><a href="#运行-spring-could-服务" class="headerlink" title="运行 spring could 服务"></a>运行 spring could 服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./springcloud.sh</div></pre></td></tr></table></figure>
+<h3 id="运行-web-服务"><a href="#运行-web-服务" class="headerlink" title="运行 web 服务"></a>运行 web 服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./copyall.sh</div></pre></td></tr></table></figure>
+<h3 id="运行询价服务"><a href="#运行询价服务" class="headerlink" title="运行询价服务"></a>运行询价服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker service create --name=quotes-service --replicas=1 --network=micro_network eriklupander/quotes-service</div></pre></td></tr></table></figure>
+<h3 id="访问验证"><a href="#访问验证" class="headerlink" title="访问验证"></a>访问验证</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">docker-machine ip swarm-manager-1</div><div class="line"></div><div class="line">192.168.99.100:6767/accounts/10000</div></pre></td></tr></table></figure>
+<h2 id="服务监控"><a href="#服务监控" class="headerlink" title="服务监控"></a>服务监控</h2><h3 id="visualizer"><a href="#visualizer" class="headerlink" title="visualizer"></a>visualizer</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">docker service create \</div><div class="line">  --name=viz \</div><div class="line">  --publish=8080:8080/tcp \</div><div class="line">  --constraint=node.role==manager \</div><div class="line">  --mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \</div><div class="line">  dockersamples/visualizer</div></pre></td></tr></table></figure>
+<p>访问:192.168.99.100:8080</p>
+<h3 id="dvizz"><a href="#dvizz" class="headerlink" title="dvizz"></a>dvizz</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">docker service create \</div><div class="line">   --constraint node.role==manager \</div><div class="line">   --replicas 1 --name dvizz -p 6969:6969 \</div><div class="line">   --mount type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock \</div><div class="line">   --network my_network \</div><div class="line">   eriklupander/dvizz</div></pre></td></tr></table></figure>
+<p>访问:192.168.99.100:6969</p>
+<h2 id="服务发现与负载均衡"><a href="#服务发现与负载均衡" class="headerlink" title="服务发现与负载均衡"></a>服务发现与负载均衡</h2><h3 id="docker-服务缩放"><a href="#docker-服务缩放" class="headerlink" title="docker 服务缩放"></a>docker 服务缩放</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker service scale accountservice=3</div></pre></td></tr></table></figure>
+<h2 id="springcould-config-集中配置"><a href="#springcould-config-集中配置" class="headerlink" title="springcould config 集中配置"></a>springcould config 集中配置</h2><h3 id="依赖-rabbitmq"><a href="#依赖-rabbitmq" class="headerlink" title="依赖 rabbitmq"></a>依赖 rabbitmq</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line"># RabbitMQ</div><div class="line">docker service rm rabbitmq</div><div class="line">docker build -t shihp/rabbitmq ./</div><div class="line">docker service create --name=rabbitmq --replicas=1 --network=my_network -p 1883:1883 -p 5672:5672 -p 15672:15672 shihp/rabbitmq</div></pre></td></tr></table></figure>
+<h3 id="依赖-viper-动态配置"><a href="#依赖-viper-动态配置" class="headerlink" title="依赖 viper 动态配置"></a>依赖 viper 动态配置</h3><h3 id="spring-could-config"><a href="#spring-could-config" class="headerlink" title="spring-could-config"></a>spring-could-config</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line"># Config Server</div><div class="line">cd support/config-server</div><div class="line">./gradlew build</div><div class="line">cd ../..</div><div class="line">docker build -t shihp/configserver support/config-server/</div><div class="line">docker service rm configserver</div><div class="line">docker service create --replicas 1 --name configserver -p 8888:8888 --network my_network --update-delay 10s --with-registry-auth  --update-parallelism 1 shihp/configserver</div></pre></td></tr></table></figure>
+<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://192.168.99.100:8888/accountservice/dev/master</div></pre></td></tr></table></figure>
+<h3 id="刷新"><a href="#刷新" class="headerlink" title="刷新"></a>刷新</h3><h2 id="services"><a href="#services" class="headerlink" title="services"></a>services</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"># docker service 服务监控</div><div class="line">dvizz</div><div class="line"></div><div class="line"># go web 服务</div><div class="line">accountservice</div><div class="line"></div><div class="line"># java 微服务</div><div class="line">quotes-service</div><div class="line"></div><div class="line"># spring could config 服务 依赖</div><div class="line">rabbitmq</div><div class="line"></div><div class="line"># spring could config 服务</div><div class="line">configserver</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
       
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2018">2018</h2>
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="https://upload.cc/i/KmHLVw.jpeg" alt="walter wechat" style="width: 200px; max-width: 100%;"/>
+    <div>公众号</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="https://upload.cc/i/vlEVqM.jpeg" alt="walter WeChat Pay"/>
+          <p>微信打赏</p>
         </div>
       
       
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="https://upload.cc/i/cThzlq.jpeg" alt="walter Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
 
       
+    </div>
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
+    <div>
+      
         
-            <a class="post-title-link" href="/2018/08/09/go/go 应用容器化部署/" itemprop="url">
-              
-                <span itemprop="name">go 微服务实践(docker swarm)</span>
-              
-            </a>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/go/" rel="tag"># go</a>
+          
+        </div>
+      
+
+      
         
-      </h2>
+      
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-08-09T20:20:44+08:00"
-              content="2018-08-09" >
-          08-09
-        </time>
-      </div>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/04/运维/搭建 thrift  PHP 环境/" rel="next" title="搭建 thrift  PHP 环境">
+                <i class="fa fa-chevron-left"></i> 搭建 thrift  PHP 环境
+              </a>
+            
+          </div>
 
-    </header>
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
 
-    
-
+    <div class="post-spread">
       
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/07/04/运维/搭建 thrift  PHP 环境/" itemprop="url">
-              
-                <span itemprop="name">搭建 thrift  PHP 环境</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-07-04T18:20:44+08:00"
-              content="2018-07-04" >
-          07-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/07/04/运维/搭建 hbase 单机环境/" itemprop="url">
-              
-                <span itemprop="name">搭建 hbase 单机环境</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-07-04T18:20:44+08:00"
-              content="2018-07-04" >
-          07-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/06/25/go/go 微服务实践/" itemprop="url">
-              
-                <span itemprop="name">go 微服务实践</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-06-25T20:20:44+08:00"
-              content="2018-06-25" >
-          06-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/27/go/gogs 应用部署/" itemprop="url">
-              
-                <span itemprop="name">gogs 应用部署</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-27T20:20:44+08:00"
-              content="2018-04-27" >
-          04-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/25/go/go 微服务实践 consul/" itemprop="url">
-              
-                <span itemprop="name">go 微服务实践 consul</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-25T20:20:44+08:00"
-              content="2018-04-25" >
-          04-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/18/go/beego 应用部署/" itemprop="url">
-              
-                <span itemprop="name">beego 部署方案</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-18T20:20:44+08:00"
-              content="2018-04-18" >
-          04-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/02/efficient/privoxy over the wall in terminal/" itemprop="url">
-              
-                <span itemprop="name">shadowsocks 下 在 终端 使用 privoxy Over the wall</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-02T18:20:44+08:00"
-              content="2018-04-02" >
-          04-02
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/02/23/php/phalcon-model save 使用/" itemprop="url">
-              
-                <span itemprop="name">phalcon model save 使用</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-02-23T23:20:44+08:00"
-              content="2018-02-23" >
-          02-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/02/09/运维/shell 实现php 脚本动态扩展/" itemprop="url">
-              
-                <span itemprop="name">shell 实现php 脚本动态扩展</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-02-09T18:20:44+08:00"
-              content="2018-02-09" >
-          02-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
-
+    </div>
+  </div>
 
 
           </div>
@@ -719,6 +543,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -738,8 +573,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars0.githubusercontent.com/u/12179178?v=3&u=0c0d21c59b924f1bd9063d456652768791dacde3&s=400"
@@ -799,6 +643,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#go-微服务实践-docker-swarm"><span class="nav-number">1.</span> <span class="nav-text">go 微服务实践(docker swarm)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编写-web-服务"><span class="nav-number">1.1.</span> <span class="nav-text">编写 web 服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-化-http-服务"><span class="nav-number">1.2.</span> <span class="nav-text">docker 化 http 服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-swarm-环境"><span class="nav-number">1.3.</span> <span class="nav-text">docker swarm 环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-machine"><span class="nav-number">1.3.1.</span> <span class="nav-text">创建 machine</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#依赖"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">依赖</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-machine-swarm-init"><span class="nav-number">1.3.2.</span> <span class="nav-text">docker-machine swarm init</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进入容器"><span class="nav-number">1.3.3.</span> <span class="nav-text">进入容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建网络"><span class="nav-number">1.3.4.</span> <span class="nav-text">创建网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行-rabbitmq-服务"><span class="nav-number">1.3.5.</span> <span class="nav-text">运行 rabbitmq 服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行-spring-could-服务"><span class="nav-number">1.3.6.</span> <span class="nav-text">运行 spring could 服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行-web-服务"><span class="nav-number">1.3.7.</span> <span class="nav-text">运行 web 服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行询价服务"><span class="nav-number">1.3.8.</span> <span class="nav-text">运行询价服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问验证"><span class="nav-number">1.3.9.</span> <span class="nav-text">访问验证</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务监控"><span class="nav-number">1.4.</span> <span class="nav-text">服务监控</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#visualizer"><span class="nav-number">1.4.1.</span> <span class="nav-text">visualizer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dvizz"><span class="nav-number">1.4.2.</span> <span class="nav-text">dvizz</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务发现与负载均衡"><span class="nav-number">1.5.</span> <span class="nav-text">服务发现与负载均衡</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-服务缩放"><span class="nav-number">1.5.1.</span> <span class="nav-text">docker 服务缩放</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springcould-config-集中配置"><span class="nav-number">1.6.</span> <span class="nav-text">springcould config 集中配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖-rabbitmq"><span class="nav-number">1.6.1.</span> <span class="nav-text">依赖 rabbitmq</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖-viper-动态配置"><span class="nav-number">1.6.2.</span> <span class="nav-text">依赖 viper 动态配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spring-could-config"><span class="nav-number">1.6.3.</span> <span class="nav-text">spring-could-config</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#验证"><span class="nav-number">1.6.4.</span> <span class="nav-text">验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#刷新"><span class="nav-number">1.6.5.</span> <span class="nav-text">刷新</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#services"><span class="nav-number">1.7.</span> <span class="nav-text">services</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -914,11 +774,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
 
 
   
@@ -937,6 +795,18 @@
       <script id="dsq-count-scr" src="https://https-shihp-github-io.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://shihp.github.io/2018/08/09/go/go 应用容器化部署/';
+          this.page.identifier = '2018/08/09/go/go 应用容器化部署/';
+          this.page.title = 'go 微服务实践(docker swarm)';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-shihp-github-io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   

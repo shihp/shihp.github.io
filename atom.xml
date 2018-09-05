@@ -760,30 +760,6 @@
   </entry>
   
   <entry>
-    <title>mac vim 设置</title>
-    <link href="https://shihp.github.io/2017/03/21/%E8%BF%90%E7%BB%B4/vim/"/>
-    <id>https://shihp.github.io/2017/03/21/运维/vim/</id>
-    <published>2017-03-21T10:20:44.000Z</published>
-    <updated>2017-05-12T09:52:13.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>#mac vim 设置</p>
-<p><code>vi ~/.vimrc</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">set ai                  &quot; auto indenting</div><div class="line">set history=100         &quot; keep 100 lines of history</div><div class="line">set ruler               &quot; show the cursor position</div><div class="line">syntax on               &quot; syntax highlighting</div><div class="line">set hlsearch            &quot; highlight the last searched term</div><div class="line">filetype plugin on      &quot; use the file type plugins</div><div class="line"></div><div class="line">&quot; When editing a file, always jump to the last cursor position</div><div class="line">autocmd BufReadPost *</div><div class="line">\ if ! exists(&quot;g:leave_my_cursor_position_alone&quot;) |</div><div class="line">\ if line(&quot;&apos;\&quot;&quot;) &gt; 0 &amp;&amp; line (&quot;&apos;\&quot;&quot;) &lt;= line(&quot;$&quot;) |</div><div class="line">\ exe &quot;normal g&apos;\&quot;&quot; |</div><div class="line">\ endif |</div><div class="line">\ endif</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;#mac vim 设置&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;vi ~/.vimrc&lt;/code&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/d
-    
-    </summary>
-    
-    
-      <category term="vim" scheme="https://shihp.github.io/tags/vim/"/>
-    
-  </entry>
-  
-  <entry>
     <title>vagrant 虚拟机工具</title>
     <link href="https://shihp.github.io/2017/03/21/%E8%BF%90%E7%BB%B4/vagrant/"/>
     <id>https://shihp.github.io/2017/03/21/运维/vagrant/</id>
@@ -813,29 +789,169 @@
   </entry>
   
   <entry>
-    <title>auth_basic</title>
-    <link href="https://shihp.github.io/2017/02/04/nginx/auth_basic/"/>
-    <id>https://shihp.github.io/2017/02/04/nginx/auth_basic/</id>
-    <published>2017-02-04T10:20:44.000Z</published>
-    <updated>2017-05-12T09:52:57.000Z</updated>
+    <title>mac vim 设置</title>
+    <link href="https://shihp.github.io/2017/03/21/%E8%BF%90%E7%BB%B4/vim/"/>
+    <id>https://shihp.github.io/2017/03/21/运维/vim/</id>
+    <published>2017-03-21T10:20:44.000Z</published>
+    <updated>2017-05-12T09:52:13.000Z</updated>
     
-    <content type="html"><![CDATA[<p>#nginx auth_basic 配置</p>
-<p>nginx .conf 文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">upstream kibana5 &#123;</div><div class="line">    server localhost:5601 fail_timeout=5;</div><div class="line">    keepalive 64;</div><div class="line">&#125;</div><div class="line">server &#123;</div><div class="line">    listen               5602;</div><div class="line">    server_name          kibana_server.com;</div><div class="line">    access_log           /data/log/nginx/kibana.srv-log-dev.log;</div><div class="line">    error_log            /data/log/nginx/kibana.srv-log-dev.error.log;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">         auth_basic &quot;secret&quot;;</div><div class="line">         auth_basic_user_file /data/local/nginx/passwd.db;</div><div class="line">         proxy_pass           http://localhost:5601;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><em>配置的选项</em><br><code>auth_basic &quot;secret&quot;;
- auth_basic_user_file /data/local/nginx/passwd.db;</code></p>
-<p><em>auth文件</em><br>/data/local/nginx/passwd.db</p>
-<p>我使用的是nginx服务器：为了方便直接使用在线工具生成的，格式如下：<br>user:passwd</p>
-]]></content>
+    <content type="html"><![CDATA[<p>#mac vim 设置</p>
+<p><code>vi ~/.vimrc</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">set ai                  &quot; auto indenting</div><div class="line">set history=100         &quot; keep 100 lines of history</div><div class="line">set ruler               &quot; show the cursor position</div><div class="line">syntax on               &quot; syntax highlighting</div><div class="line">set hlsearch            &quot; highlight the last searched term</div><div class="line">filetype plugin on      &quot; use the file type plugins</div><div class="line"></div><div class="line">&quot; When editing a file, always jump to the last cursor position</div><div class="line">autocmd BufReadPost *</div><div class="line">\ if ! exists(&quot;g:leave_my_cursor_position_alone&quot;) |</div><div class="line">\ if line(&quot;&apos;\&quot;&quot;) &gt; 0 &amp;&amp; line (&quot;&apos;\&quot;&quot;) &lt;= line(&quot;$&quot;) |</div><div class="line">\ exe &quot;normal g&apos;\&quot;&quot; |</div><div class="line">\ endif |</div><div class="line">\ endif</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;#nginx auth_basic 配置&lt;/p&gt;
-&lt;p&gt;nginx .conf 文件&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div
+      &lt;p&gt;#mac vim 设置&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;vi ~/.vimrc&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/d
     
     </summary>
     
     
-      <category term="basrc" scheme="https://shihp.github.io/tags/basrc/"/>
+      <category term="vim" scheme="https://shihp.github.io/tags/vim/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux</title>
+    <link href="https://shihp.github.io/2017/02/04/%E8%BF%90%E7%BB%B4/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/"/>
+    <id>https://shihp.github.io/2017/02/04/运维/linux基础命令/</id>
+    <published>2017-02-04T10:20:44.000Z</published>
+    <updated>2017-05-21T08:53:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="linux"><a href="#linux" class="headerlink" title="#linux"></a>#linux</h2><p>[TOC]</p>
+<p>##系统</p>
+<table>
+<thead>
+<tr>
+<th>信息</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>内核/操作系统/CPU信息</td>
+<td><code>uname</code></td>
+</tr>
+<tr>
+<td>操作系统版本</td>
+<td>head -n 1 /etc/issue</td>
+</tr>
+<tr>
+<td>计算机名</td>
+<td>hostname</td>
+</tr>
+<tr>
+<td>列出加载的内核模块</td>
+<td>lsmod</td>
+</tr>
+<tr>
+<td>查看环境变量</td>
+<td>env</td>
+</tr>
+<tr>
+<td>查看系统</td>
+<td>ps -p 1</td>
+</tr>
+</tbody>
+</table>
+<p>##资源</p>
+<table>
+<thead>
+<tr>
+<th>信息</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>查看内存使用量和交换区使用量</td>
+<td><code>free -g</code></td>
+</tr>
+<tr>
+<td>查看系统运行时间、用户数、负载</td>
+<td>uptime</td>
+</tr>
+<tr>
+<td>端口zan yong</td>
+<td>lsof -i</td>
+<td>grep 5601</td>
+</tr>
+<tr>
+<td>查看硬盘</td>
+<td><code>du -sh *</code> ``</td>
+</tr>
+</tbody>
+</table>
+<p>##用户</p>
+<table>
+<thead>
+<tr>
+<th>信息</th>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>新增</td>
+<td><code>adduser</code></td>
+<td>会自动为创建的用户指定主目录、系统shell版本，会在创建时输入用户密码。</td>
+</tr>
+<tr>
+<td>新增</td>
+<td><code>useradd</code></td>
+<td>需要使用参数选项指定上述基本设置，如果不使用任何参数，则创建的用户无密码、无主目录、没有指定shell版本</td>
+</tr>
+<tr>
+<td>添加root</td>
+<td></td>
+<td><code>vi /etc/sudoers.d/$user &amp;&amp; $user ALL=(ALL) ALL``chmod $user_file 400</code></td>
+</tr>
+<tr>
+<td>修改密码</td>
+<td><code>sudo passwd $suser</code></td>
+</tr>
+<tr>
+<td>修改用户权限</td>
+<td><code>sudo chown -R elasticsearch:elasticsearch /data/local/elasticsearch</code></td>
+</tr>
+</tbody>
+</table>
+<p>##进程<br>|信息|命令|描述<br>|:|<br>|kill|<code>ps -ef | grep xmpp.php | grep -v grep | awk &#39;{print $2}&#39; | xargs kill</code>|</p>
+<p>##文件</p>
+<table>
+<thead>
+<tr>
+<th>信息</th>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>软链</td>
+<td><code>ln -s /data/local/mysql5.6.16/bin/mysql /uer/bin</code></td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">系统</div><div class="line"></div><div class="line">　　# uname -a # 查看内核/操作系统/CPU信息</div><div class="line">　　# head -n 1 /etc/issue # 查看操作系统版本</div><div class="line">　　# cat /proc/cpuinfo # 查看CPU信息</div><div class="line">　　# hostname # 查看计算机名</div><div class="line">　　# lspci -tv # 列出所有PCI设备</div><div class="line">　　# lsusb -tv # 列出所有USB设备</div><div class="line">　　# lsmod # 列出加载的内核模块</div><div class="line">　　# env # 查看环境变量</div><div class="line"></div><div class="line">资源</div><div class="line"></div><div class="line">　　# free -m # 查看内存使用量和交换区使用量</div><div class="line">　　# df -h # 查看各分区使用情况</div><div class="line">　　# du -sh &lt;目录名&gt; # 查看指定目录的大小</div><div class="line">　　# grep MemTotal /proc/meminfo # 查看内存总量</div><div class="line">　　# grep MemFree /proc/meminfo # 查看空闲内存量</div><div class="line">　　# uptime # 查看系统运行时间、用户数、负载</div><div class="line">　　# cat /proc/loadavg # 查看系统负载</div><div class="line"></div><div class="line">磁盘和分区</div><div class="line"></div><div class="line">　　# mount | column -t # 查看挂接的分区状态</div><div class="line">　　# fdisk -l # 查看所有分区</div><div class="line">　　# swapon -s # 查看所有交换分区</div><div class="line">　　# hdparm -i /dev/hda # 查看磁盘参数（仅适用于IDE设备）</div><div class="line">　　# dmesg | grep IDE # 查看启动时IDE设备检测状况</div><div class="line"></div><div class="line">网络</div><div class="line"></div><div class="line">　　# ifconfig # 查看所有网络接口的属性</div><div class="line">　　# iptables -L # 查看防火墙设置</div><div class="line">　　# route -n # 查看路由表</div><div class="line">　　# netstat -lntp # 查看所有监听端口</div><div class="line">　　# netstat -antp # 查看所有已经建立的连接</div><div class="line">　　# netstat -s # 查看网络统计信息</div><div class="line"></div><div class="line">进程</div><div class="line"></div><div class="line">　　# ps -ef # 查看所有进程</div><div class="line">　　# top # 实时显示进程状态</div><div class="line"></div><div class="line">用户</div><div class="line"></div><div class="line">　　# w # 查看活动用户</div><div class="line">　　# id &lt;用户名&gt; # 查看指定用户信息</div><div class="line">　　# last # 查看用户登录日志</div><div class="line">　　# cut -d: -f1 /etc/passwd # 查看系统所有用户</div><div class="line">　　# cut -d: -f1 /etc/group # 查看系统所有组</div><div class="line">　　# crontab -l # 查看当前用户的计划任务</div><div class="line"></div><div class="line">服务</div><div class="line"></div><div class="line">　　# chkconfig --list # 列出所有系统服务</div><div class="line">　　# chkconfig --list | grep on # 列出所有启动的系统服务</div><div class="line"></div><div class="line">程序</div><div class="line"></div><div class="line">　　# rpm -qa # 查看所有安装的软件包</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;linux&quot;&gt;&lt;a href=&quot;#linux&quot; class=&quot;headerlink&quot; title=&quot;#linux&quot;&gt;&lt;/a&gt;#linux&lt;/h2&gt;&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;p&gt;##系统&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;信息&lt;/th&gt;
+&lt;
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://shihp.github.io/tags/linux/"/>
     
   </entry>
   

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shihp.github.io/"/>
-  <updated>2018-08-09T08:52:29.535Z</updated>
+  <updated>2018-09-13T10:27:29.095Z</updated>
   <id>https://shihp.github.io/</id>
   
   <author>
@@ -14,6 +14,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>go mod 使用初探索</title>
+    <link href="https://shihp.github.io/2018/09/13/go/go%20mod%20%E4%BD%BF%E7%94%A8%E5%88%9D%E6%8E%A2/"/>
+    <id>https://shihp.github.io/2018/09/13/go/go mod 使用初探/</id>
+    <published>2018-09-13T12:20:44.000Z</published>
+    <updated>2018-09-13T10:27:29.095Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<blockquote>
+<p>go1.1版本新出的依赖管理 用起来还不错 分享下</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="go-mod-使用指南"><a href="#go-mod-使用指南" class="headerlink" title="go mod 使用指南"></a>go mod 使用指南</h1><hr>
+<p>[toc]</p>
+<h2 id="翻墙"><a href="#翻墙" class="headerlink" title="翻墙"></a>翻墙</h2><h3 id="本地代理"><a href="#本地代理" class="headerlink" title="本地代理"></a>本地代理</h3><p>可以直接从 golang.org拉代码<br>参考我的博客<a href="https://www.shihuipengx.com/2018/04/02/efficient/privoxy%20over%20the%20wall%20in%20terminal/" target="_blank" rel="external">shadowsocks 下 在 终端 使用 privoxy Over the wall</a></p>
+<h3 id="go-mod-replace"><a href="#go-mod-replace" class="headerlink" title="go mod replace"></a>go mod replace</h3><p>使用 <code>go help mod edit</code> 查看帮助文档<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">go mod edit -replace golang.org/x/sys=../golang.org/x/sys</div><div class="line">go mod edit -replace golang.org/x/text@v0.3.0=../golang.org/x/text</div></pre></td></tr></table></figure></p>
+<h2 id="vendor"><a href="#vendor" class="headerlink" title="vendor"></a>vendor</h2><p><code>go mod vendor</code></p>
+<h2 id="tidy"><a href="#tidy" class="headerlink" title="tidy"></a>tidy</h2><p><code>go mod tidy</code></p>
+<blockquote>
+<p>over</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;go1.1版本新出的依赖管理 用起来还不错 分享下&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="go" scheme="https://shihp.github.io/tags/go/"/>
+    
+  </entry>
   
   <entry>
     <title>go 微服务实践(docker swarm)</title>
@@ -69,37 +106,6 @@
   </entry>
   
   <entry>
-    <title>搭建 thrift  PHP 环境</title>
-    <link href="https://shihp.github.io/2018/07/04/%E8%BF%90%E7%BB%B4/%E6%90%AD%E5%BB%BA%20thrift%20%20PHP%20%E7%8E%AF%E5%A2%83/"/>
-    <id>https://shihp.github.io/2018/07/04/运维/搭建 thrift  PHP 环境/</id>
-    <published>2018-07-04T10:20:44.000Z</published>
-    <updated>2018-07-04T08:31:10.354Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="搭建-thrift-PHP-环境"><a href="#搭建-thrift-PHP-环境" class="headerlink" title="搭建 thrift  PHP 环境"></a>搭建 thrift  PHP 环境</h1><hr>
-<blockquote>
-<p>php 使用 thrift 链接 hbase</p>
-</blockquote>
-<a id="more"></a>
-<h2 id="编译安装-thrift"><a href="#编译安装-thrift" class="headerlink" title="编译安装 thrift"></a>编译安装 thrift</h2><p><a href="https://thrift.apache.org/docs/BuildingFromSource" target="_blank" rel="external">中文说明</a></p>
-<h2 id="编译-php-扩展"><a href="#编译-php-扩展" class="headerlink" title="编译 php 扩展"></a>编译 php 扩展</h2><p>地址 <code>thrift-0.11.0/lib/php/src/ext/thrift_protocol</code></p>
-<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><p><a href="https://github.com/shihp/php-hbase" target="_blank" rel="external">使用示例</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;搭建-thrift-PHP-环境&quot;&gt;&lt;a href=&quot;#搭建-thrift-PHP-环境&quot; class=&quot;headerlink&quot; title=&quot;搭建 thrift  PHP 环境&quot;&gt;&lt;/a&gt;搭建 thrift  PHP 环境&lt;/h1&gt;&lt;hr&gt;
-&lt;blockquote&gt;
-&lt;p&gt;php 使用 thrift 链接 hbase&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-      <category term="thrift" scheme="https://shihp.github.io/tags/thrift/"/>
-    
-  </entry>
-  
-  <entry>
     <title>搭建 hbase 单机环境</title>
     <link href="https://shihp.github.io/2018/07/04/%E8%BF%90%E7%BB%B4/%E6%90%AD%E5%BB%BA%20hbase%20%E5%8D%95%E6%9C%BA%E7%8E%AF%E5%A2%83/"/>
     <id>https://shihp.github.io/2018/07/04/运维/搭建 hbase 单机环境/</id>
@@ -131,6 +137,37 @@
     
     
       <category term="hbase" scheme="https://shihp.github.io/tags/hbase/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>搭建 thrift  PHP 环境</title>
+    <link href="https://shihp.github.io/2018/07/04/%E8%BF%90%E7%BB%B4/%E6%90%AD%E5%BB%BA%20thrift%20%20PHP%20%E7%8E%AF%E5%A2%83/"/>
+    <id>https://shihp.github.io/2018/07/04/运维/搭建 thrift  PHP 环境/</id>
+    <published>2018-07-04T10:20:44.000Z</published>
+    <updated>2018-07-04T08:31:10.354Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="搭建-thrift-PHP-环境"><a href="#搭建-thrift-PHP-环境" class="headerlink" title="搭建 thrift  PHP 环境"></a>搭建 thrift  PHP 环境</h1><hr>
+<blockquote>
+<p>php 使用 thrift 链接 hbase</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="编译安装-thrift"><a href="#编译安装-thrift" class="headerlink" title="编译安装 thrift"></a>编译安装 thrift</h2><p><a href="https://thrift.apache.org/docs/BuildingFromSource" target="_blank" rel="external">中文说明</a></p>
+<h2 id="编译-php-扩展"><a href="#编译-php-扩展" class="headerlink" title="编译 php 扩展"></a>编译 php 扩展</h2><p>地址 <code>thrift-0.11.0/lib/php/src/ext/thrift_protocol</code></p>
+<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><p><a href="https://github.com/shihp/php-hbase" target="_blank" rel="external">使用示例</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;搭建-thrift-PHP-环境&quot;&gt;&lt;a href=&quot;#搭建-thrift-PHP-环境&quot; class=&quot;headerlink&quot; title=&quot;搭建 thrift  PHP 环境&quot;&gt;&lt;/a&gt;搭建 thrift  PHP 环境&lt;/h1&gt;&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;php 使用 thrift 链接 hbase&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="thrift" scheme="https://shihp.github.io/tags/thrift/"/>
     
   </entry>
   
@@ -809,149 +846,6 @@
     
     
       <category term="vim" scheme="https://shihp.github.io/tags/vim/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>linux</title>
-    <link href="https://shihp.github.io/2017/02/04/%E8%BF%90%E7%BB%B4/linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/"/>
-    <id>https://shihp.github.io/2017/02/04/运维/linux基础命令/</id>
-    <published>2017-02-04T10:20:44.000Z</published>
-    <updated>2017-05-21T08:53:44.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="linux"><a href="#linux" class="headerlink" title="#linux"></a>#linux</h2><p>[TOC]</p>
-<p>##系统</p>
-<table>
-<thead>
-<tr>
-<th>信息</th>
-<th>命令</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>内核/操作系统/CPU信息</td>
-<td><code>uname</code></td>
-</tr>
-<tr>
-<td>操作系统版本</td>
-<td>head -n 1 /etc/issue</td>
-</tr>
-<tr>
-<td>计算机名</td>
-<td>hostname</td>
-</tr>
-<tr>
-<td>列出加载的内核模块</td>
-<td>lsmod</td>
-</tr>
-<tr>
-<td>查看环境变量</td>
-<td>env</td>
-</tr>
-<tr>
-<td>查看系统</td>
-<td>ps -p 1</td>
-</tr>
-</tbody>
-</table>
-<p>##资源</p>
-<table>
-<thead>
-<tr>
-<th>信息</th>
-<th>命令</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>查看内存使用量和交换区使用量</td>
-<td><code>free -g</code></td>
-</tr>
-<tr>
-<td>查看系统运行时间、用户数、负载</td>
-<td>uptime</td>
-</tr>
-<tr>
-<td>端口zan yong</td>
-<td>lsof -i</td>
-<td>grep 5601</td>
-</tr>
-<tr>
-<td>查看硬盘</td>
-<td><code>du -sh *</code> ``</td>
-</tr>
-</tbody>
-</table>
-<p>##用户</p>
-<table>
-<thead>
-<tr>
-<th>信息</th>
-<th>命令</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>新增</td>
-<td><code>adduser</code></td>
-<td>会自动为创建的用户指定主目录、系统shell版本，会在创建时输入用户密码。</td>
-</tr>
-<tr>
-<td>新增</td>
-<td><code>useradd</code></td>
-<td>需要使用参数选项指定上述基本设置，如果不使用任何参数，则创建的用户无密码、无主目录、没有指定shell版本</td>
-</tr>
-<tr>
-<td>添加root</td>
-<td></td>
-<td><code>vi /etc/sudoers.d/$user &amp;&amp; $user ALL=(ALL) ALL``chmod $user_file 400</code></td>
-</tr>
-<tr>
-<td>修改密码</td>
-<td><code>sudo passwd $suser</code></td>
-</tr>
-<tr>
-<td>修改用户权限</td>
-<td><code>sudo chown -R elasticsearch:elasticsearch /data/local/elasticsearch</code></td>
-</tr>
-</tbody>
-</table>
-<p>##进程<br>|信息|命令|描述<br>|:|<br>|kill|<code>ps -ef | grep xmpp.php | grep -v grep | awk &#39;{print $2}&#39; | xargs kill</code>|</p>
-<p>##文件</p>
-<table>
-<thead>
-<tr>
-<th>信息</th>
-<th>命令</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>软链</td>
-<td><code>ln -s /data/local/mysql5.6.16/bin/mysql /uer/bin</code></td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">系统</div><div class="line"></div><div class="line">　　# uname -a # 查看内核/操作系统/CPU信息</div><div class="line">　　# head -n 1 /etc/issue # 查看操作系统版本</div><div class="line">　　# cat /proc/cpuinfo # 查看CPU信息</div><div class="line">　　# hostname # 查看计算机名</div><div class="line">　　# lspci -tv # 列出所有PCI设备</div><div class="line">　　# lsusb -tv # 列出所有USB设备</div><div class="line">　　# lsmod # 列出加载的内核模块</div><div class="line">　　# env # 查看环境变量</div><div class="line"></div><div class="line">资源</div><div class="line"></div><div class="line">　　# free -m # 查看内存使用量和交换区使用量</div><div class="line">　　# df -h # 查看各分区使用情况</div><div class="line">　　# du -sh &lt;目录名&gt; # 查看指定目录的大小</div><div class="line">　　# grep MemTotal /proc/meminfo # 查看内存总量</div><div class="line">　　# grep MemFree /proc/meminfo # 查看空闲内存量</div><div class="line">　　# uptime # 查看系统运行时间、用户数、负载</div><div class="line">　　# cat /proc/loadavg # 查看系统负载</div><div class="line"></div><div class="line">磁盘和分区</div><div class="line"></div><div class="line">　　# mount | column -t # 查看挂接的分区状态</div><div class="line">　　# fdisk -l # 查看所有分区</div><div class="line">　　# swapon -s # 查看所有交换分区</div><div class="line">　　# hdparm -i /dev/hda # 查看磁盘参数（仅适用于IDE设备）</div><div class="line">　　# dmesg | grep IDE # 查看启动时IDE设备检测状况</div><div class="line"></div><div class="line">网络</div><div class="line"></div><div class="line">　　# ifconfig # 查看所有网络接口的属性</div><div class="line">　　# iptables -L # 查看防火墙设置</div><div class="line">　　# route -n # 查看路由表</div><div class="line">　　# netstat -lntp # 查看所有监听端口</div><div class="line">　　# netstat -antp # 查看所有已经建立的连接</div><div class="line">　　# netstat -s # 查看网络统计信息</div><div class="line"></div><div class="line">进程</div><div class="line"></div><div class="line">　　# ps -ef # 查看所有进程</div><div class="line">　　# top # 实时显示进程状态</div><div class="line"></div><div class="line">用户</div><div class="line"></div><div class="line">　　# w # 查看活动用户</div><div class="line">　　# id &lt;用户名&gt; # 查看指定用户信息</div><div class="line">　　# last # 查看用户登录日志</div><div class="line">　　# cut -d: -f1 /etc/passwd # 查看系统所有用户</div><div class="line">　　# cut -d: -f1 /etc/group # 查看系统所有组</div><div class="line">　　# crontab -l # 查看当前用户的计划任务</div><div class="line"></div><div class="line">服务</div><div class="line"></div><div class="line">　　# chkconfig --list # 列出所有系统服务</div><div class="line">　　# chkconfig --list | grep on # 列出所有启动的系统服务</div><div class="line"></div><div class="line">程序</div><div class="line"></div><div class="line">　　# rpm -qa # 查看所有安装的软件包</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;linux&quot;&gt;&lt;a href=&quot;#linux&quot; class=&quot;headerlink&quot; title=&quot;#linux&quot;&gt;&lt;/a&gt;#linux&lt;/h2&gt;&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;p&gt;##系统&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;信息&lt;/th&gt;
-&lt;
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="https://shihp.github.io/tags/linux/"/>
     
   </entry>
   

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shihp.github.io/"/>
-  <updated>2018-09-13T10:27:29.095Z</updated>
+  <updated>2018-09-24T14:44:55.167Z</updated>
   <id>https://shihp.github.io/</id>
   
   <author>
@@ -14,6 +14,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>go model struct  生成</title>
+    <link href="https://shihp.github.io/2018/09/21/go/go%20model%20struct%20%E7%94%9F%E6%88%90/"/>
+    <id>https://shihp.github.io/2018/09/21/go/go model struct 生成/</id>
+    <published>2018-09-21T12:20:44.000Z</published>
+    <updated>2018-09-24T14:44:55.167Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<blockquote>
+<p>在实际使用 go model 时,创建表 type 重复性工作工具化</p>
+</blockquote>
+<a id="more"></a>
+<blockquote>
+<p>用户针对数据表生成对应的 struct</p>
+</blockquote>
+<p>调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">structGen(mysql.DBTest,&quot;table&quot;)</div></pre></td></tr></table></figure>
+<p>返回<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">type Table struct &#123;</div><div class="line">	Id                 int64  `json:&quot;id&quot;`</div><div class="line">	UserId             int64  `json:&quot;user_id&quot;`</div><div class="line">	RealName           string `json:&quot;real_name&quot;`</div><div class="line">	RegMobile          string `json:&quot;reg_mobile&quot;`</div><div class="line">	Level              int64  `json:&quot;level&quot;`</div><div class="line">	Grow               int64  `json:&quot;grow&quot;`</div><div class="line">	WithdrawTimes      int64  `json:&quot;withdraw_times&quot;`</div><div class="line">	WithdrawUpdateTime int64  `json:&quot;withdraw_update_time&quot;`</div><div class="line">	DegradeTime        int64  `json:&quot;degrade_time&quot;`</div><div class="line">	CardId             string `json:&quot;card_id&quot;`</div><div class="line">	RegisterTime       int64  `json:&quot;register_time&quot;`</div><div class="line">	Birthday           int64  `json:&quot;birthday&quot;`</div><div class="line">	Type               int64  `json:&quot;type&quot;`</div><div class="line">	CreateTime         int64  `json:&quot;create_time&quot;`</div><div class="line">	UpdateTime         int64  `json:&quot;update_time&quot;`</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>util.go<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">package vip</div><div class="line"></div><div class="line">import (</div><div class="line">	&quot;strings&quot;</div><div class="line">	&quot;fmt&quot;</div><div class="line">	&quot;consumer/common&quot;</div><div class="line">	&quot;database/sql&quot;</div><div class="line">	&quot;os&quot;</div><div class="line">)</div><div class="line"></div><div class="line">func structGen(db *sql.DB, tableName string) &#123;</div><div class="line">	structName := nameGen(tableName)</div><div class="line">	res, err := db.Query(&quot;SHOW FULL COLUMNS FROM &quot; + tableName)</div><div class="line">	defer res.Close()</div><div class="line">	common.FailOnError(err, &quot;query fail &quot;)</div><div class="line">	a := &quot;type &quot; + structName + &quot; struct &#123; \n&quot;</div><div class="line">	var c1, c2, c3, c4, c5, c6, c7, c8, c9 string</div><div class="line"></div><div class="line">	var fileType string</div><div class="line">	for res.Next() &#123;</div><div class="line">		res.Scan(&amp;c1, &amp;c2, &amp;c3, &amp;c4, &amp;c5, &amp;c6, &amp;c7, &amp;c8, &amp;c9)</div><div class="line">		info := firstCharToUpper(c1, &quot;_&quot;)</div><div class="line"></div><div class="line">		//todo improve | more micro type</div><div class="line">		if strings.Contains(c2, &quot;int&quot;) &#123;</div><div class="line">			fileType = &quot;int64&quot;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		if strings.Contains(c2, &quot;char&quot;) &#123;</div><div class="line">			fileType = &quot;string&quot;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		aAppend := fmt.Sprintf(&quot;    %s %s `json:\&quot;%s\&quot;` \n&quot;, info, fileType, c1)</div><div class="line">		a += aAppend</div><div class="line">	&#125;</div><div class="line">	a += &quot;&#125;&quot;</div><div class="line"></div><div class="line">	println(a)</div><div class="line">	os.Exit(0)</div><div class="line">&#125;</div><div class="line">func firstCharToUpper(c1, separator string) string &#123;</div><div class="line">	c1Arr := strings.Split(c1, separator)</div><div class="line">	var info string</div><div class="line">	for _, value := range c1Arr &#123;</div><div class="line">		pre := string([]rune(value)[:1])</div><div class="line">		pre = strings.ToUpper(pre)</div><div class="line"></div><div class="line">		strAfter := string([]rune(value)[1:])</div><div class="line">		info += pre + strAfter</div><div class="line">	&#125;</div><div class="line">	return info</div><div class="line">&#125;</div><div class="line"></div><div class="line">func nameGen(tableName string) string &#123;</div><div class="line">	var structName string</div><div class="line">	tableName = strings.ToLower(tableName)</div><div class="line">	structName = firstCharToUpper(tableName, &quot;_&quot;)</div><div class="line">	return structName</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在实际使用 go model 时,创建表 type 重复性工作工具化&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="go" scheme="https://shihp.github.io/tags/go/"/>
+    
+  </entry>
   
   <entry>
     <title>go mod 使用初探索</title>
@@ -822,30 +857,6 @@
     
     
       <category term="linux 虚拟机" scheme="https://shihp.github.io/tags/linux-%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mac vim 设置</title>
-    <link href="https://shihp.github.io/2017/03/21/%E8%BF%90%E7%BB%B4/vim/"/>
-    <id>https://shihp.github.io/2017/03/21/运维/vim/</id>
-    <published>2017-03-21T10:20:44.000Z</published>
-    <updated>2017-05-12T09:52:13.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>#mac vim 设置</p>
-<p><code>vi ~/.vimrc</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">set ai                  &quot; auto indenting</div><div class="line">set history=100         &quot; keep 100 lines of history</div><div class="line">set ruler               &quot; show the cursor position</div><div class="line">syntax on               &quot; syntax highlighting</div><div class="line">set hlsearch            &quot; highlight the last searched term</div><div class="line">filetype plugin on      &quot; use the file type plugins</div><div class="line"></div><div class="line">&quot; When editing a file, always jump to the last cursor position</div><div class="line">autocmd BufReadPost *</div><div class="line">\ if ! exists(&quot;g:leave_my_cursor_position_alone&quot;) |</div><div class="line">\ if line(&quot;&apos;\&quot;&quot;) &gt; 0 &amp;&amp; line (&quot;&apos;\&quot;&quot;) &lt;= line(&quot;$&quot;) |</div><div class="line">\ exe &quot;normal g&apos;\&quot;&quot; |</div><div class="line">\ endif |</div><div class="line">\ endif</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;#mac vim 设置&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;vi ~/.vimrc&lt;/code&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/d
-    
-    </summary>
-    
-    
-      <category term="vim" scheme="https://shihp.github.io/tags/vim/"/>
     
   </entry>
   

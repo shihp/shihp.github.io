@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shihp.github.io/"/>
-  <updated>2018-10-11T02:43:52.947Z</updated>
+  <updated>2018-10-11T03:22:16.023Z</updated>
   <id>https://shihp.github.io/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="https://shihp.github.io/2018/10/10/php/yii-swoole%20%E9%9B%86%E6%88%90%E6%96%B9%E6%A1%88/"/>
     <id>https://shihp.github.io/2018/10/10/php/yii-swoole 集成方案/</id>
     <published>2018-10-10T10:20:44.000Z</published>
-    <updated>2018-10-11T02:43:52.947Z</updated>
+    <updated>2018-10-11T03:22:16.023Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="yii-swoole-集成方案"><a href="#yii-swoole-集成方案" class="headerlink" title="yii swoole 集成方案"></a>yii swoole 集成方案</h1><blockquote>
+    <content type="html"><![CDATA[<blockquote>
 <p>本文档针对 http 服务的集成,仅仅在测试阶段</p>
 </blockquote>
 <a id="more"></a>
@@ -35,7 +35,7 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;yii-swoole-集成方案&quot;&gt;&lt;a href=&quot;#yii-swoole-集成方案&quot; class=&quot;headerlink&quot; title=&quot;yii swoole 集成方案&quot;&gt;&lt;/a&gt;yii swoole 集成方案&lt;/h1&gt;&lt;blockquote&gt;
+      &lt;blockquote&gt;
 &lt;p&gt;本文档针对 http 服务的集成,仅仅在测试阶段&lt;/p&gt;
 &lt;/blockquote&gt;
     
